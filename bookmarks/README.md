@@ -4,6 +4,7 @@
 - [D216 Desktop June 2019](d216_computer_June2019.html)
 - [Computer 14 July 2022](computer14072022.html)
 - [Laptop 18 July 2022](laptop18072022.html)
+- [Computer 13 February 2025](computer13022025.html)
 
 <!--
 <li><a href=bookmarks-2012.html>Bookmarks 2012</a></li>
