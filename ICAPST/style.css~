@@ -1,0 +1,279 @@
+/* GENERAL BODY */
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* HEADER / MENU */
+header{
+  background:#2b1361; /* fallback if Home background hidden */
+  padding:12px 0;
+}
+
+.nav{
+  width:95%;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  color:white;
+  font-size:22px;
+  font-weight:bold;
+}
+
+.logo img{
+  height:40px;
+  margin-right:10px;
+}
+
+/* MENU LINKS */
+.nav ul{
+  display:flex;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.nav ul li{
+  margin-left:25px;
+}
+
+.nav ul li a{
+  color:white;
+  cursor:pointer;
+  text-decoration:none;
+  font-size:16px;
+}
+
+.nav ul li a:hover,
+.nav ul li a.active{
+  color:yellow;
+}
+
+/* TAB CONTENT */
+.tabcontent{
+  display:none;
+  padding:40px;
+}
+
+/* HOME FULLSCREEN BACKGROUND */
+.homebg{
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("../pics/front_icapst.jpeg") center/cover no-repeat;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+}
+
+/* HERO TEXT */
+.hero-text h1{
+  font-size:44px;
+  font-weight:bold;
+  margin:10px 0;
+  text-shadow:0 0 12px rgba(0,0,0,0.8);
+}
+
+.hero-text h2{
+  color:yellow;
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.hero-text h3{
+  color:yellow;
+  font-size:24px;
+  margin-top:10px;
+}
+
+/* MAIN LOGO BELOW HERO */
+.mainlogo{
+  margin-top:30px;
+}
+
+.mainlogo img{
+  height:80px;
+  vertical-align:middle;
+}
+
+.mainlogo span{
+  font-size:40px;
+  font-weight:bold;
+  margin-left:12px;
+  vertical-align:middle;
+}
+
+/* ORGANIZER INFO */
+.organizer{
+  margin-top:25px;
+  font-size:18px;
+}
+
+.organizer img{
+  height:60px;
+  vertical-align:middle;
+  margin-right:10px;
+}
+
+.organizer .orgtitle{
+  color:yellow;
+  font-weight:bold;
+}
+
+.welcome-section{
+  background:#fff;           /* white background for readability */
+  color:#000;                /* dark text */
+  padding:50px 20px;         /* spacing around text */
+  max-width:100%;           /* limit width for better readability */
+  margin:50px auto;          /* center horizontally */
+  border-radius:20px;        /* rounded corners */
+  box-shadow:0 4px 20px rgba(0,0,0,0.08); /* subtle shadow */
+}
+
+.welcome-section h2{
+  text-align:center;
+  margin-bottom:20px;
+  font-size:32px;
+  color:#2b1361;             /* match header color */
+}
+
+.welcome-section p{
+  font-size:18px;
+  line-height:1.8;
+}
+/* VENUE SECTION */
+.venue-section{
+  max-width:900px;
+  margin:50px auto;
+  text-align:center;
+}
+
+.venue-section img{
+  max-width:100%;
+  border-radius:10px;
+  margin-bottom:15px;
+}
+
+/* JOURNAL SECTION */
+.journal-section{
+  max-width:900px;
+  margin:50px auto;
+  padding:20px;
+}
+
+.journal-section h2{
+  text-align:center;
+  margin-bottom:20px;
+  color:#2b1361;
+}
+
+.journal-card{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  text-decoration:none;
+  border:1px solid #e8e8e8;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:20px;
+  transition:0.3s;
+  color:black;
+}
+
+.journal-card img{
+  width:100px;
+  height:auto;
+  margin-right:20px;
+  border-radius:6px;
+}
+
+.journal-card:hover{
+  box-shadow:0 4px 20px rgba(0,0,0,0.1);
+}
+
+.journal-info h4{
+  margin:0 0 8px 0;
+  color:#2b1361;
+}
+
+.journal-info p{
+  margin:0;
+  font-size:16px;
+  line-height:1.5;
+}
+
+/* SPONSORS SECTION */
+.sponsors-section{
+  max-width:100%;
+  margin:50px auto;
+  text-align:center;
+}
+
+.sponsors-section h2{
+  margin-bottom:20px;
+  color:#2b1361;
+}
+
+.sponsor-images img{
+  max-width:100%;
+  display:block;
+  margin:0 auto 25px auto;
+  border-radius:20px;
+}
+/* Sponsorship image with overlay text */
+.sponsor-overlay{
+  position:relative;
+  display:inline-block;
+  max-width:100%;
+  margin:0 auto 50px auto;
+}
+
+.sponsor-overlay img{
+  width:100%;
+  border-radius:20px;
+  display:block;
+}
+
+/* Text on top of image */
+.sponsor-text{
+  position:absolute;
+  top:0%;           /* center vertically */
+  left:0%;          /* center horizontally */
+  width:100%;     /* span full width */
+  height:100%;    /* span full height of image */
+  color:#002366;  /* dark blue */
+  font-size:18px;
+  line-height:1.6;
+  padding:30px;   /* space around text */
+  background: rgba(255,255,255,0.6); /* semi-transparent for readability */
+  border-radius:20px; /* match image corners */
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  justify-content:center; /* vertically center text */
+  text-align:center;      /* optional: center horizontally */
+}
+
+/* FOOTER */
+footer {
+  background: 
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), /* dark overlay for text readability */
+    url("front_icapst.png") center/cover no-repeat;     /* same image as Home banner */
+  color: white;
+  text-align: center;
+  padding: 25px 10px;
+  font-size: 16px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+footer p{
+  margin: 0;
+}

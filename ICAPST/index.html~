@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" sizes="16x16" href="../pics/logo_icapst.png">
+  <title>ICAPST 2026</title>
+
+  <link rel="stylesheet" href="style.css">
+<script>
+function openTab(id){
+  document.querySelectorAll('.tabcontent').forEach(t=>t.style.display='none');
+  document.getElementById(id).style.display='block';
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('btn-'+id).classList.add('active');
+}
+window.onload=function(){openTab('home')}
+</script>
+</head>
+
+<body>
+<header>
+  <div class="nav">
+    <div class="logo">
+      <img src="../pics/logo_icapst.png">
+      <span>ICAPST 2026</span>
+    </div>
+    <ul>
+      <li><a id="btn-home" onclick="openTab('home')">Home</a></li>
+      <li><a id="btn-about" onclick="openTab('about')">About</a></li>
+      <li><a id="btn-speakers" onclick="openTab('speakers')">Speakers</a></li>
+      <li><a id="btn-abstract" onclick="openTab('abstract')">Call for Abstract</a></li>
+      <li><a id="btn-registration" onclick="openTab('registration')">Registration</a></li>
+      <li><a id="btn-committee" onclick="openTab('committee')">Organizing Committee</a></li>
+    </ul>
+  </div>
+</header>
+
+<div id="home" class="tabcontent homebg">
+<div class="hero-text">
+  <h2>Welcome to</h2>
+  <h1>1st International Conference on Advances<br>in Physical Sciences & Technologies</h1>
+  <h3>📅 22–24 October 2026</h3>
+
+  <div class="mainlogo">
+    <img src="../pics/logo_icapst.png" alt="ICAPST logo">
+    <span>ICAPST 2026</span>
+  </div>
+
+  <div class="organizer">
+    <img src="../pics/logo2.png" alt="Logo2">
+    <div class="organizer-text">
+      <span class="orgtitle">🏛️ Organized by</span><br>
+      Department of Physics<br>
+      University of Rajasthan, Jaipur, India
+    </div>
+  </div>
+</div>
+
+<!-- NEW SECTION BELOW HERO -->
+<div class="welcome-section">
+  <h2>Welcome to ICAPST 2026</h2>
+  <p>
+    The Department of Physics, University of Rajasthan, is proud to host and welcome you at ICAPST, a distinguished platform for all scientists, academicians, scholars, and industrialists to share recent fundamental and technological developments in the diverse field of physical sciences. The conference will provide an exciting opportunity to present ideas, the latest research, and discuss science, technology, policy, and associated critical challenges. The conference encourages young scholars/students to present their research findings, offering a rich opportunity to interact with eminent speakers/experts, project developers, researchers, and scientists. With an emphasis on both fundamental and applied research, the conference’s vision is to connect and explore scientific advances and technologies in support of a global mission for sustainable development.
+  </p>
+  <p><a href="../ICAPST2026.pdf" target="_blank" style="font-size: 18px; text-decoration: underline;">📄 Click here to view the Conference Flyer</a></p>
+  <p><a href="https://forms.gle/Dc5JhneiMwkPTxCQ8" target="_blank" style="font-size: 18px; color: #0645AD;">Please click to show your interest</a></p>
+  
+  <h2>Venue</h2>
+  <img src="pics/venue.png" alt="University of Rajasthan Venue" style="max-width: 100%; border-radius: 10px; margin-bottom: 15px;">
+  <p><strong>Humanities Department, University of Rajasthan, Jaipur</strong></p>
+  
+  <h2 style="margin-top: 40px;">Journal Publication</h2>
+  <p>The selected papers from ICAPST 2026 will be recommended for publication in the following journals, as per conference tracks:</p>
+  <div class="journal-section">
+    <a class="journal-card" href="https://www.sciencedirect.com/journal/solar-compass" target="_blank">
+      <img src="https://ars.els-cdn.com/content/image/X27729400.jpg" alt="Journal Cover">
+      <div class="journal-info">
+	<h4>Solar Compass — Elsevier</h4>
+	<p>Publishes cutting-edge research in solar energy science and technology.</p>
+      </div>
+    </a>
+    <center>More journals will be updated soon.</center>
+  </div>
+  <div class="sponsors-section">
+    <h2>Supported By</h2>
+    <div class="sponsor-images">
+      <img src="../pics/support.png" alt="Supported By Logo" style="max-width: 200%; display: block; margin: 0 auto 25px auto; border-radius:20px;">
+    </div>
+  </div>
+  
+  <div class="sponsors-section">
+    <h2>Sponsorship</h2>
+    <div class="sponsor-overlay">
+      <img src="../pics/sponsor.png" alt="Sponsor Logo">
+      <div class="sponsor-text">
+	The organising committee of ICAPST 2026 would like to invite sponsors to showcase their products and services to conference participants and delegates. The sponsorship need not be entirely in cash; it can take the form of materials you believe will be useful for organising ICAPST, such as a memento, high tea, lunch, etc.<br>
+	<b>Kindly reach out to us to know more about the sponsorship category, potential benefits and formal letter.</b>
+      </div>
+      <a style="text-align:center; font-size:20px; font-weight:bold;">Sponsors are welcome</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 ICAPST — International Conference on Advances in Physical Sciences & Technology. All rights reserved.</p>
+</footer>
+
+<div id="about" class="tabcontent">
+<h2>About</h2>
+<p>About conference information here.</p>
+</div>
+
+
+<div id="speakers" class="tabcontent">
+<h2>Speakers</h2>
+<p>Speaker details here.</p>
+</div>
+
+
+<div id="abstract" class="tabcontent">
+<h2>Call for Abstract</h2>
+<p>Submission guidelines here.</p>
+</div>
+
+
+<div id="registration" class="tabcontent">
+<h2>Registration</h2>
+<p>Registration details here.</p>
+</div>
+
+
+<div id="committee" class="tabcontent">
+<h2>Organizing Committee</h2>
+<p>Committee members here.</p>
+</div>
+
+</body>
+</html>
