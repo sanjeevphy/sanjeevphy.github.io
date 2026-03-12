@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ICAPST 2026 — Single Page</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script>
+function openTab(id){
+  document.querySelectorAll('.tabcontent').forEach(t=>t.style.display='none');
+  var activeTab = document.getElementById(id);
+  activeTab.style.display='block';
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('btn-'+id).classList.add('active');
+  /* Lazy load images inside this tab */
+  activeTab.querySelectorAll('img[data-src]').forEach(img=>{
+    if(!img.src){
+      img.src = img.getAttribute('data-src');
+    }
+  });
+}
+window.onload=function(){openTab('home')};
+</script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div style="font-size:26px;font-weight:700">ICAPST 2026</div>
+    <ul>
+      <li><a id="btn-home" href="#" onclick="openTab('home')">Home</a></li>
+      <li><a id="btn-about" href="#" onclick="openTab('about')">About</a></li>
+      <li><a id="btn-speakers" href="#" onclick="openTab('speakers')">Speakers</a></li>
+	  <li><a id="btn-advcommittee" href="#" onclick="openTab('advcommittee')">Advisory Committee</a></li>
+      <li><a id="btn-abstract" href="#" onclick="openTab('abstract')">Call for Abstract</a></li>
+      <li><a id="btn-registration" href="#" onclick="openTab('registration')">Registration</a></li>
+      <li><a id="btn-committee" href="#" onclick="openTab('committee')">Organizing Committee</a></li>
+  
+    </ul>
+  </div>
+</header>
+
+
+<div id="tabs">
+
+<div id="home" class="tabcontent">
+  <div class="hero">
+  <img src="front_icapst.png" alt="ICAPST Banner" style="width:100%; border-radius:20px; margin-bottom:25px;">
+</div>
+  <h2>Welcome to ICAPST 2026</h2>
+  <p>The Department of Physics, University of Rajasthan, is proud to host and welcome you at ICAPST, a distinguished platform for all scientists, academicians, scholars, and industrialists to share recent fundamental and technological developments in the diverse field of physical sciences. The conference will provide an exciting opportunity to present ideas, the latest research, and discuss science, technology, policy, and associated critical challenges. The conference encourages young scholars/students to present their research findings, offering a rich opportunity to interact with eminent speakers/experts, project developers, researchers, and scientists. With an emphasis on both fundamental and applied research, the conference’s vision is to connect and explore scientific advances and technologies in support of a global mission for sustainable development.</p>
+  <div class="venue-section" style="text-align: center; margin-top: 50px;">
+ <div style="margin-top: 40px; text-align: center;">
+    <p><a href="ICAPST2026.pdf" target="_blank" style="font-size: 18px; text-decoration: underline;">📄 Click here to view the Conference Flyer</a></p>
+    <p><a href="https://forms.gle/Dc5JhneiMwkPTxCQ8" target="_blank" style="font-size: 18px; color: #0645AD;">Please click to show your interest</a></p>
+  </div>
+
+ <h2>Venue</h2>
+  <img src="pics/venue.png" alt="University of Rajasthan Venue" style="max-width: 100%; border-radius: 10px; margin-bottom: 15px;">
+  <p><strong>Humanities Department, University of Rajasthan, Jaipur</strong></p>
+</div>
+ 
+   
+ <h2 style="margin-top: 40px;">Journal Publication</h2>
+  <p>The selected papers from ICAPST 2026 will be recommended for publication in the following journals, as per conference tracks:</p>
+  <ul>
+    <div class="journal-section">
+
+  
+  <a class="journal-card" href="https://www.sciencedirect.com/journal/solar-compass" target="_blank">
+    <img src="https://ars.els-cdn.com/content/image/X27729400.jpg" alt="Journal Cover">
+    <div class="journal-info">
+      <h4>Solar Compass — Elsevier</h4>
+      <p>Publishes cutting-edge research in solar energy science and technology.</p>
+    </div>
+  </a>
+    <li>More journals will be updated soon.</li>
+  </ul>
+  <div class="sponsors-section">
+    <h2>Supported By</h2>
+    <div class="sponsor-images">
+      <img src="pics/support.png" alt="Supported By Logo" style="max-width: 200%; display: block; margin: 0 auto 25px auto; border-radius:20px;">
+    </div>
+  </div>
+
+  <div class="sponsors-section">
+    <h2>Sponsorship</h2>
+    <div class="sponsor-images">
+      <img src="pics/sponsor.png" alt="Sponsor Logo" style="max-width: 200%; display: block; margin: 0 auto 25px auto; border-radius:20px;">
+	  <li style="text-align: center; font-size: 20px; font-weight: bold;">Sponsors are welcome</li>
+  </ul>
+    </div>
+  </div> 
+</div> 
+  
+<div id="about" class="tabcontent">
+  <h2>About Us</h2>
+
+  <div class="card">
+    <h3><strong>University of Rajasthan (UOR)</strong></h3>
+    <img src="uni.png" alt="Rajasthan University picture" style="width:75%; display: block; margin: 0 auto 25px auto; border-radius:20px;">
+    <p style="font-size: 24px;"> University of Rajasthan is the largest state university in Rajasthan (India), founded in 1946, located in Jaipur City, and has a prestigious NAAC A+ grade accreditation. Over the years, the University has redefined itself by meeting the challenges of changing trends in the educational system and has made a significant contribution to the field of higher education. The past seven decades have been remarkable for UOR, Jaipur, with the landmark achievement of University with Potential for Excellence. <a href="https://www.uniraj.ac.in" target="_blank">Click for more details...</a></p>
+
+    <h3><strong>Department of Physics</strong></h3>
+    <img src="dept.png" alt="Picture of Physics Department" style="width:75%; border-radius:20px; display: block; margin: 0 auto 25px auto;">
+	<p style="font-size: 24px;">
+	  The Department of Physics, established in 1960, offers postgraduate and PhD programs. Over the past six decades, the Department&apos;s research activities have been supported by distinguished national and international agencies, UGC, SERB, DEIT, DST, CERN, BRNS, DRDO, CSIR, MNRE, UGC-DAE CSR, IUAC, and ISRO. The department was awarded the status of "Centre for Advanced Studies" (CAS) by UGC for the period 2015–2020. The Department&apos;s major research focus encompasses Materials Science, High-Energy Physics, Plasma Physics, Nuclear Physics, Solar Energy, Hydrogen Energy, Biophysics, and Microwave Electronics. The Department is well renowned in the global scenario for the scientific achievements of its faculty and alumni. 
+	  <a href="https://physics.uniraj.ac.in/" target="_blank">Click for more details...</a>
+	</p>
+	  </div>
+
+  <h2>About Jaipur city</h2>
+  <div class="card">
+    <img src="jpr.png" alt="Some pictures of city" style="width:75%; border-radius:20px; display: block; margin: 0 auto 25px auto;">
+    <p style="font-size: 24px;"><b>You are welcome to marvel at Jaipur’s beauty and delve into it’s royal history.</b><br>
+      <b>How to reach Jaipur:</b> The nearest airport to Jaipur is Jaipur International Airport (JAI), approximately 7 kilometres away from the University of Rajasthan. Direct flights connect Jaipur to major Indian cities like Delhi, Mumbai, and Bangalore, making it a convenient choice for air travel. The city is well-connected to every part of India by rail and road. With two major railway stations, Gandhi Nagar and Jaipur Railway Station, reaching here is convenient. It is easily accessible by bus from nearby cities such as Delhi, Agra, and Kota.</b>
+  </div>
+    </div>
+
+	<div id="speakers" class="tabcontent">
+		<h2>Speakers</h2>
+
+
+
+<h3>Keynote Speakers</h3>
+<div class="speaker-grid">
+
+	<div class="speaker-card">
+		 <img src="pics/Kedar Singh.jpg" alt="Prof. Kedar Singh">
+		<div class="cm-name">Prof. Kedar Singh</div>
+		<div class="cm-role">Director R & D, Jawaharlal Nehru University, New Delhi, India</div>
+	  </div>
+	  
+	  <div class="speaker-card">
+    <img src="pics/reddy.png" alt="Prof. K.S. Reddy">
+    <div class="cm-name">Prof. K.S. Reddy</div>
+    <div class="cm-role">Department of Mechanical Engineering, IIT, Madras, India</div>
+  </div>
+  
+   <div class="speaker-card">
+    <img src="pics/Amare abebe.jpg" alt="Prof. Amare Abebe">
+    <div class="cm-name">Prof. Amare Abebe</div>
+    <div class="cm-role">Director, Centre for Space Research, North-West University (NWU)
+South Africa
+</div>
+  </div>
+  
+
+  <div class="speaker-card">
+    <img src="pics/Paolo Mele.jpg" alt="Paolo Mele">
+    <div class="cm-name">Prof. Paolo Male</div>
+    <div class="cm-role">SIT Research Laboratories, Shibaura Institute of Technology, Saitama, Japan</div>
+  </div>
+
+
+<div class="speaker-card">
+    <img src="pics/rabindra.png" alt="Shri. Rabindra Kumar Satpathy">
+    <div class="cm-name">Shri. Rabindra Kumar Satpathy</div>
+    <div class="cm-role">CEO, Emami Power, India</div>
+  </div>
+</div>
+
+<h3>Invited Speakers</h3>
+<div class="speaker-grid">
+
+  <div class="speaker-card">
+    <img src="pics/Ashmore Mawire.jpg" alt="Prof. Ashmore Mawire">
+    <div class="cm-name">Prof. Ashmore Mawire</div>
+    <div class="cm-role">Department of Physics and Electronics, North-West University, South Africa</div>
+  </div>
+
+  <div class="speaker-card">
+    <img src="pics/sagade.png" alt="Prof.  A. A. Sagade">
+    <div class="cm-name">Prof. A. A. Sagade</div>
+    <div class="cm-role">Departamento de Ingeniería Mecánica, Universidad de Tarapaca, Arica, Chile</div>
+  </div>
+
+  <div class="speaker-card">
+    <img src="pics/harphool.png" alt="Prof. Harphool Kumawat">
+    <div class="cm-name">Dr. Harphool Kumawat</div>
+    <div class="cm-role">Bhabha Atomic Research Centre, Mumbai, India</div>
+  </div>
+
+  <div class="speaker-card">
+    <img src="pics/Maarten Vanierschot.png" alt="Prof. Maarten Vanierschot">
+    <div class="cm-name">Prof. Maarten Vanierschot</div>
+    <div class="cm-role">KU Leuven, University, Belgium</div>
+  </div>
+
+  <div class="speaker-card">
+    <img src="pics/Kamlendra Awasthi.png" alt="Dr. Kamlendra Awasthi">
+    <div class="cm-name">Dr. Kamlendra Awasthi</div>
+    <div class="cm-role">Head, Department of Physics, MNIT, Rajasthan, India</div>
+  </div>
+
+  <div class="speaker-card">
+    <img src="pics/shubh.png" alt="Prof. Subhashish Banerjee">
+    <div class="cm-name">Prof. Subhashish Banerjee</div>
+    <div class="cm-role">IIT Jodhpur, Rajasthan, India</div>
+  </div>
+
+  <div class="speaker-card">
+    <img src="pics/ykgupta.jpg" alt="Dr. Y. K. Gupta">
+    <div class="cm-name">Dr. Y. K. Gupta</div>
+    <div class="cm-role">Bhabha Atomic Research Centre, Mumbai, India</div>
+  </div>
+</div>
+</div>
+
+<div id="advcommittee" class="tabcontent">
+  <h2>Advisory Committee</h2>
+
+  <h3> International Advisory Committee</h3>
+  <div class="committee-grid">
+  <div class="committee-card"><img src="pics/Amare abebe.jpg" alt="Prof. Amare Abebe"><p><strong>Prof. Amare Abebe</strong><br>Director, Centre for Space Research, North-West University, South Africa</p></div>
+  <div class="committee-card"><img src="pics/Ashmore Mawire.jpg" alt="Prof. Ashmore Mawire"><p><strong>Prof. Ashmore Mawire</strong><br>Director, Solar Thermal Group (MaSIM), North-West University, South Africa</p></div>
+  <div class="committee-card"><img src="pics/Boris Balakin.jpg" alt="Prof. Boris V. Balakin"><p><strong>Prof. Boris V. Balakin</strong><br>Western Norway University of Applied Sciences, Norway</p></div>
+  <div class="committee-card"><img src="pics/Yogi Goswami.jpg" alt="Prof. D. Yogi Goswami"><p><strong>Prof. D. Yogi Goswami</strong><br>Director, Clean Energy Research Centre, University of South Florida, USA</p></div>
+  <div class="committee-card"><img src="pics/Eduard Llobet Valero.jpg" alt="Prof. Eduard Llobet Valero"><p><strong>Prof. Eduard Llobet Valero</strong><br>President, IBERNAM, Universitat Rovira i Virgili, Spain</p></div>
+  <div class="committee-card"><img src="pics/Jayanta Mondol.jpg" alt="Prof. Jayanta Mondol"><p><strong>Prof. Jayanta Mondol</strong><br>Research Director, Ulster University, UK</p></div>
+  <div class="committee-card"><img src="pics/Maarten Vanierschot.png" alt="Prof. Maarten Vanierschot"><p><strong>Prof. Maarten Vanierschot</strong><br>KU Leuven University, Belgium</p></div>
+  <div class="committee-card"><img src="pics/Nirpendra Singh.png" alt="Prof. Nirpendra Singh"><p><strong>Prof. Nirpendra Singh</strong><br>Khalifa University, UAE</p></div>
+  <div class="committee-card"><img src="pics/Paolo Mele.jpg" alt="Prof. Paolo Mele"><p><strong>Prof. Paolo Mele</strong><br>Shibaura Institute of Technology, Japan</p></div>
+  <div class="committee-card"><img src="pics/Sanjay Mathur.jpg" alt="Prof. Sanjay Mathur"><p><strong>Prof. Sanjay Mathur</strong><br>Director, Inorganic and Material Chemistry, University of Cologne, Germany</p></div>
+  <div class="committee-card"><img src="pics/Senentxu Lanceros-Mendez.jpg" alt="Prof. Senentxu Lanceros-Mendez"><p><strong>Prof. Senentxu Lanceros-Mendez</strong><br>Scientific Director, Basque Center for Materials, Spain</p></div>
+  <div class="committee-card"><img src="pics/Y K Mishra.jpg" alt="Prof. Y. K. Mishra"><p><strong>Prof. Y. K. Mishra</strong><br>Leader, Smart Materials Group, University of Southern Denmark, Denmark</p></div>
+  <div class="committee-card"><img src="pics/Patrick Oyirwoth Abedigamba.jpg" alt="Dr. Patrick Oyirwoth Abedigamba"><p><strong>Dr. Patrick Oyirwoth Abedigamba</strong><br>Kyambogo University, Uganda</p></div>
+  <div class="committee-card"><img src="pics/Purushottam Soni.jpg" alt="Dr. Purushottam Soni"><p><strong>Dr. Purushottam Soni</strong><br>Marian University, USA</p></div>
+  <div class="committee-card"><img src="pics/Samantha Wijewardane.jpg" alt="Dr. Samantha Wijewardane"><p><strong>Dr. Samantha Wijewardane</strong><br>University of South Florida, USA</p></div>
+</div>
+
+  <h3> National Advisory Committee</h3>
+  <div class="committee-grid">
+  <div class="committee-card"><img src="pics/Anil Bhardwaj.jpg" alt="Prof. Anil Bhardwaj"><p><strong>Prof. Anil Bhardwaj</strong><br>Director, PRL Ahmedabad, Gujarat</p></div>
+  <div class="committee-card"><img src="pics/Avinash C Pandey.jpg" alt="Prof. Avinash C Pandey"><p><strong>Prof. Avinash C Pandey</strong><br>Director, IUAC, New Delhi</p></div>
+  <div class="committee-card"><img src="pics/Venu Gopal Achanta.jpg" alt="Prof. Venu Gopal Achanta"><p><strong>Prof. Venu Gopal Achanta</strong><br>Director, NPL, Delhi</p></div>
+  <div class="committee-card"><img src="pics/A K Nagawat.jpg" alt="Prof. A. K. Nagawat"><p><strong>Prof. A. K. Nagawat</strong><br>Vice Chancellor, DSEU, New Delhi</p></div>
+  <div class="committee-card"><img src="pics/N P Padhy.png" alt="Prof. N. P. Padhy"><p><strong>Prof. N. P. Padhy</strong><br>Director, MNIT Jaipur</p></div>
+  <div class="committee-card"><img src="pics/PC Panchariya.jpg" alt="Dr. P.C. Panchariya"><p><strong>Dr. P.C. Panchariya</strong><br>Director, CSIR-CEERI, Pilani</p></div>
+  <div class="committee-card"><img src="pics/B S Negi.jpg" alt="Dr. B. S. Negi"><p><strong>Dr. B. S. Negi</strong><br>Former Adviser & Scientist-G, MNRE, New Delhi</p></div>
+  <div class="committee-card"><img src="pics/Vineet Saini.jpg" alt="Dr. Vineet Saini"><p><strong>Dr. Vineet Saini</strong><br>Associate Head & Scientist 'F', DST, New Delhi</p></div>
+  <div class="committee-card"><img src="pics/Kedar Singh.jpg" alt="Prof. Kedar Singh"><p><strong>Prof. Kedar Singh</strong><br>Director R&D, JNU, New Delhi</p></div>
+  <div class="committee-card"><img src="pics/Ajay Kumar Tyagi.png" alt="Prof. Ajay Kumar Tyagi"><p><strong>Prof. Ajay Kumar Tyagi</strong><br>BHU, Varanasi, Uttar Pradesh</p></div>
+  <div class="committee-card"><img src="pics/Amita Chandra.jpg" alt="Prof. Amita Chandra"><p><strong>Prof. Amita Chandra</strong><br>University of Delhi</p></div>
+  <div class="committee-card"><img src="pics/Arun Pratap.jpg" alt="Prof. Arun Pratap"><p><strong>Prof. Arun Pratap</strong><br>M.S. University of Baroda, Gujarat</p></div>
+  <div class="committee-card"><img src="pics/SK Samdarshi.jpg" alt="Prof. S.K. Samdarshi"><p><strong>Prof. S.K. Samdarshi</strong><br>Central University, Ranchi, Jharkhand</p></div>
+  <div class="committee-card"><img src="pics/Manish Dev Shrimali.png" alt="Prof. Manish Dev Shrimali"><p><strong>Prof. Manish Dev Shrimali</strong><br>Central University, Ajmer, Rajasthan</p></div>
+  <div class="committee-card"><img src="pics/P K Ahluwalia.jpg" alt="Prof. P. K. Ahluwalia"><p><strong>Prof. P. K. Ahluwalia</strong><br>President, IAPT, Himachal Pradesh University, Shimla</p></div>
+  <div class="committee-card"><img src="pics/Nikunj Shukla.jpg" alt="Shri Nikunj Shukla"><p><strong>Shri Nikunj Shukla</strong><br>Director, Waasol Energies LLP, Gujarat</p></div>
+  <div class="committee-card"><img src="pics/Prafulla K Jha.jpg" alt="Prof. Prafulla K Jha"><p><strong>Prof. Prafulla K Jha</strong><br>M.S. University of Baroda, Gujarat</p></div>
+  <div class="committee-card"><img src="pics/Ramesh Gardas.jpg" alt="Prof. Ramesh Gardas"><p><strong>Prof. Ramesh Gardas</strong><br>IIT Madras, Tamil Nadu</p></div>
+  <div class="committee-card"><img src="pics/Sanjeev Kumar Sharma.jpg" alt="Prof. Sanjeev Kumar Sharma"><p><strong>Prof. Sanjeev Kumar Sharma</strong><br>C.C.S. University, Meerut, Uttar Pradesh</p></div>
+  <div class="committee-card"><img src="pics/Mahesh Kumar.jpg" alt="Prof. Mahesh Kumar"><p><strong>Prof. Mahesh Kumar</strong><br>IIT Jodhpur, Rajasthan</p></div>
+  <div class="committee-card"><img src="pics/Y K Vijay.jpg" alt="Prof. Y. K. Vijay"><p><strong>Prof. Y. K. Vijay</strong><br>President, MRSI - Rajasthan Chapter</p></div>
+  <div class="committee-card"><img src="pics/Yogesh Kumar Gupta.jpg" alt="Dr. Yogesh Kumar Gupta"><p><strong>Dr. Yogesh Kumar Gupta</strong><br>Scientific Officer (SO) G, BARC, Mumbai</p></div>
+  <div class="committee-card"><img src="pics/Dhanvir Singh Rana.jpg" alt="Prof. Dhanvir Singh Rana"><p><strong>Prof. Dhanvir Singh Rana</strong><br>IISER Bhopal, Madhya Pradesh</p></div>
+  <div class="committee-card"><img src="pics/Ravi Kumar.jpg" alt="Dr. Ravi Kumar"><p><strong>Dr. Ravi Kumar</strong><br>IIT Delhi</p></div>
+  <div class="committee-card"><img src="pics/Kamlendra Awasthi.png" alt="Prof. Kamlendra Awasthi"><p><strong>Prof. Kamlendra Awasthi</strong><br>Head, Department of Physics, MNIT Jaipur</p></div>
+  <div class="committee-card"><img src="pics/Neelima Gupta.jpg" alt="Prof. Neelima Gupta"><p><strong>Prof. Neelima Gupta</strong><br>Head, Department of Chemistry, University of Rajasthan</p></div>
+  <div class="committee-card"><img src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png"><p><strong>Prof. Anjali Krishnamurthy</strong><br>Former Head, Department of Physics, University of Rajasthan</p></div>
+  <div class="committee-card"><img src="pics/Kananbala Sharma.png" alt="Prof. Kananbala Sharma"><p><strong>Prof. Kananbala Sharma</strong><br>Former Head, Department of Physics, University of Rajasthan</p></div>
+  <div class="committee-card"><img src="pics/Deepak Bhatnagar.jpg" alt="Prof. Deepak Bhatnagar"><p><strong>Prof. Deepak Bhatnagar</strong><br>Former Head, Department of Physics, University of Rajasthan</p></div>
+  <div class="committee-card"><img src="pics/Harsh Soni.jpg" alt="Dr. Harsh Soni"><p><strong>Dr. Harsh Soni</strong><br>IIT Mandi, Himachal Pradesh</p></div>
+  <div class="committee-card"><img src="pics/narendra soni.jpeg" alt="Dr. narendra soni"><p><strong>Dr Narendra K Soni</strong><br>Director R & D, NTPC Ltd </p></div>
+  <div class="committee-card"><img src="pics/CSPT.png" alt="Dr. C.S.P. Tripathi"><p><strong>Dr. C.S.P. Tripathi</strong><br>BHU, Varanasi</p></div>
+  <div class="committee-card"><img src="pics/NS.png" alt="Dr. Namrata Sengar"><p><strong>Dr. Namrata Sengar</strong><br>University of Kota, Kota, Rajasthan</p></div>
+  <div class="committee-card"><img src="pics/BT.jpg" alt="Dr. Balram Tripathi"><p><strong>Dr. Balram Tripathi</strong><br>SS Jain Subodh PG College, Jaipur, Rajasthan</p></div>
+
+</div>
+</div>
+
+
+<div id="abstract" class="tabcontent">
+  <h2> Call for Abstract & Submission</h2>
+  <h3>Conference Tracks (not limited to) </h3>
+  <ul class="track-list">
+    <li> Advances in Nuclear Science</li>
+    <li>Advances in Plasma Physics</li>
+    <li>Agrophysics & Technology</li>
+    <li>Biomaterials & Applications</li>
+    <li>Electric & Thermal Energy Storage</li>
+    <li>High Energy Physics & Cosmology</li>
+    <li>Hydrogen Energy & Technology</li>
+    <li>Material Science & Applications</li>
+    <li>Materials for Solar Cells</li>
+    <li>Microwave Electronics & Communication</li>
+    <li>Nanomaterials & Nanotechnology</li>
+    <li>Photonics & Optical Devices</li>
+    <li>Quantum Computing & Artificial Intelligence</li>
+    <li>Solar Thermal Technologies</li>
+    <li>Trends in Wind and Biomass Energy</li>
+  </ul>
+
+  <div class="abstract-guidelines">
+    <h3>Submission Guidelines</h3>
+    <ul>
+      <li>Word limit: 250–400 words.</li>
+      <li>It should briefly state the purpose, the principal results, and the major conclusions of the research. </li>
+      <li>Must be original and plagiarism-free (<10%).</li>
+      <li>Select appropriate track during submission.</li>
+      <li>Accepted abstracts will receive an Abstract ID.</li>
+      <li>Abstract template will be available soon.</li>
+    </ul>
+  </div>
+
+  <div class="abstract-dates">
+    <h3>Important Dates</h3>
+    <ul>
+      <li>Conference: <strong>22–24 October 2026</strong></li>
+      <li>Abstract Submission Deadline: <strong>15 August 2026</strong></li>
+      <li>Acceptance Notification: <strong>25 August 2026</strong></li>
+      <li>Early Registration: <strong>31 August 2026</strong></li>
+    </ul>
+  </div>
+</div>
+
+<div id="registration" class="tabcontent">
+  <h2>Registration</h2>
+
+  <h3>Fee Structure</h3>
+  <table border="1" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse; text-align: center;">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Early Bird<br>(Till 31 Aug. 2026)</th>
+        <th>Regular<br>(Till 30 Sept. 2026)</th>
+        <th>Late<br>After 30 Sept. 2026</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="4" style="text-align:left;"><strong>Indian and SAARC Participants (INR)</strong></td></tr>
+      <tr><td>Scholars/Students</td><td>2500</td><td>3000</td><td>3500</td></tr>
+      <tr><td>Academician/Faculty</td><td>3000</td><td>3500</td><td>4000</td></tr>
+      <tr><td>Industry person</td><td>4000</td><td>4500</td><td>5000</td></tr>
+      <tr><td>Attendees/Accompany</td><td>2000</td><td>2500</td><td>3000</td></tr>
+
+      <tr><td colspan="4" style="text-align:left;"><strong>Foreign Participants (USD)</strong></td></tr>
+      <tr><td>Scholars/Students</td><td>150</td><td>200</td><td>250</td></tr>
+      <tr><td>Academician/Faculty</td><td>250</td><td>300</td><td>330</td></tr>
+      <tr><td>Industry person</td><td>350</td><td>400</td><td>450</td></tr>
+      <tr><td>Attendees/Accompany</td><td>150</td><td>200</td><td>250</td></tr>
+
+      <tr>
+        <td colspan="4" style="text-align:left;">
+          <strong>Ticket of City Tour with Dinner:</strong><br>
+          INR 1500 / USD 20 (Till 30 Sept. 2026)<br>
+          INR 2500 / USD 50 (After 30 Sept. 2026)
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Guidelines</h3>
+  <ul>
+    <li>The registration fee covers a conference kit, access to domain-specific sessions, a presentation/participation certificate, and food coupons during the conference.</li>
+    <li>A paper presentation certificate will be issued to the presenter. The other co-authors will be issued participation certificates if registered individually.</li>
+    <li>Certificates will be issued to the Attendees.</li>
+    <li>Concession available on group registration.</li>
+    <li>Journal publication charges may or may not apply, depending on the paper track.</li>
+    <li>The paper publication will be subjected to the review process.</li>
+    <li>The ICAPST abstract book will be made available online in digital formats.</li>
+  </ul>
+
+  <h3>Accommodation</h3>
+  <p>Details will be provided soon.</p>
+
+  <h3>Conference Schedule</h3>
+  <p style="font-size: 18px; text-align: center; padding: 40px; color: #666;">
+    The detailed conference schedule will be added soon. Stay tuned!
+  </p>
+ 
+  </div>
+
+
+<div id="committee" class="tabcontent">
+  <h2>Organizing Committee</h2>
+
+  <div style="text-align: center;">
+  <h3>Patron</h3>
+  <div class="committee-grid">
+    <div class="committee-card">
+      <img src="pics/Alpana.jpg" alt="Prof. Alpana Kateja">
+      <p><strong>Prof. Alpana Kateja</strong><br>Vice Chancellor, University of Rajasthan, Jaipur</p>
+    </div>
+  </div></div>
+
+
+<div style="text-align: center;">	
+  <h3>Chairperson</h3>
+  <div class="committee-grid">
+    <div class="committee-card">
+      <img src="pics/skgupta.png" alt="Prof. S.K. Gupta">
+      <p><strong>Prof. S.K. Gupta</strong><br>Chairperson<br>Head, Department of Physics</p>
+    </div>
+   
+  </div></div>
+  <div style="text-align: center;">
+ <h3>Co-Chairperson</h3>
+  <div class="committee-grid">
+    <div class="committee-card">
+      <img src="pics/Manisha.jpg" alt="Dr. Manisha Gupta">
+      <p><strong>Dr. Manisha Gupta</strong><br>Associate Professor</p>
+    </div>
+  </div></div>
+<div style="text-align: center;">
+  <h3>Conveners</h3>
+  <div class="committee-grid">
+    <div class="committee-card">
+      <img src="pics/Sunita.png" alt="Dr. Sunita Mahavar">
+      <p><strong>Dr. Sunita Mahavar</strong><br>Assistant Professor</p>
+    </div>
+   
+  </div></div>
+  <div style="text-align: center;">
+	<h3>Co-Conveners</h3>
+	<div class="committee-grid">
+    <div class="committee-card">
+      <img src="pics/Puraram.png" alt="Dr. Puraram">
+      <p><strong>Dr. Puraram</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="pics/Dalpat.png" alt="Dr. Dalpat Meena">
+      <p><strong>Dr. Dalpat Meena</strong><br>Assistant Professor</p>
+    </div>
+	 </div></div>
+<div style="text-align: center;">
+  <h3>Organizing Secretaries</h3>
+  <div class="committee-grid">
+    <div class="committee-card">
+      <img src="pics/sanjay.jpg" alt="Dr. Sanjay Kumar">
+      <p><strong>Dr. Sanjay Kumar</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="pics/arvind.jpg" alt="Dr. Arvind Kumar">
+      <p><strong>Dr. Arvind Kumar</strong><br>Assistant Professor</p>
+    </div>
+  </div></div>
+
+<div style="text-align: center;">
+  <h3>Joint Secretaries</h3>
+  <div class="committee-grid">
+    <div class="committee-card">
+      <img src="pics/narendra.jpg" alt="Dr. Narendra Jakhar">
+      <p><strong>Dr. Narendra Jakhar</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="pics/dinesh.jpg" alt="Dr. Dinesh Kumar">
+      <p><strong>Dr. Dinesh Kumar</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="pics/subhash.jpg" alt="Dr. Subhash Chandra">
+      <p><strong>Dr. Subhash Chandra</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="pics/suchitra.jpg" alt="Dr. Suchitra Yadav">
+      <p><strong>Dr. Suchitra Yadav</strong><br>Assistant Professor</p>
+    </div>
+  </div></div>
+
+<div style="text-align: center;">
+  <h3>Treasurers</h3>
+  <div class="committee-grid">
+    <div class="committee-card">
+      <img src="pics/gora.jpg" alt="Dr. M. K. Gora">
+      <p><strong>Dr. M. K. Gora</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="pics/kishan.jpg" alt="Dr. Kishan Kumar">
+      <p><strong>Dr. Kishan Kumar</strong><br>Assistant Professor</p>
+    </div>
+  </div></div>
+
+<div style="text-align: center;">
+  <h3>Members</h3>
+  <div class="committee-grid">
+    <div class="committee-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png">
+      <p><strong>Dr. Sarita Kumari</strong><br>Associate Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/236/236831.png">
+      <p><strong>Dr. Chhagan Lal</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/236/236831.png">
+      <p><strong>Dr. Mamraj Singh</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png">
+      <p><strong>Dr. Kanchan Gehlot</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/236/236831.png">
+      <p><strong>Dr. Amanpal Singh Clair</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/236/236831.png">
+      <p><strong>Mr. Sanjeev Kumar</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/236/236831.png">
+      <p><strong>Dr. Bharat Lal Meena</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png">
+      <p><strong>Dr. Rekha Yadav</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png">
+      <p><strong>Dr. Summaiyya Saleem</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/236/236831.png">
+      <p><strong>Dr. Jitendra Kumar Mishra</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png">
+      <p><strong>Dr. Jyoti Saini</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/236/236831.png">
+      <p><strong>Dr. Dinesh Kumar Yadav</strong><br>Assistant Professor</p>
+    </div>
+    <div class="committee-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png">
+      <p><strong>Ms. Priyanka Meena</strong><br>Assistant Professor</p>
+    </div>
+  </div></div>
+
+  <h2>Reach Us</h2>
+  <p><strong>Conference Email:</strong> <a href="mailto:ICAPST2026@gmail.com">ICAPST2026@gmail.com</a></p>
+
+  <ul style="list-style-type: none; padding-left: 0;">
+    <li><strong>Dr. Sunita Mahavar</strong><br>Email: <a href="mailto:smjpr1986@gmail.com">smjpr1986@gmail.com</a><br>Phone: +91-8239528824</li>
+    <li><strong>Dr. Dalpat Meena</strong><br>Phone: +91-9694016108</li>
+    <li><strong>Dr. Sanjay Kumar</strong><br>Phone: +91-9928629238</li>
+    <li><strong>Dr. Dinesh Kumar</strong><br>Phone: +91-9461209852</li>
+  </ul>
+
+  <h2>Gallery</h2>
+  <p>Photos from the ICAPST 2026 Conference will be showcased here soon.</p>
+</div>
+  </div>
+</div>
+ 
+</div> 
+</div>
+</div>
+<footer>
+  <div class="footer-box">
+    © 2026 ICAPST — International Conference on Advances in Physical Sciences & Technology. All rights reserved.
+  </div>
+</footer>
+<script>
+var acc=document.getElementsByClassName("accordion");
+for(let i=0;i<acc.length;i++){
+  acc[i].addEventListener("click",function(){
+    this.classList.toggle("active");
+    var panel=this.nextElementSibling;
+    panel.style.display = panel.style.display==="block" ? "none" : "block";
+  });
+}
+</script>
+</body>
+</html>
