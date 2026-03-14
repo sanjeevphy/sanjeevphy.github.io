@@ -274,3 +274,29 @@ footer {
 footer p {
   margin: 0;
 }
+
+
+@media (max-width:768px){
+
+.nav{
+  flex-direction:column;
+}
+
+.nav ul{
+  margin-top:10px;
+}
+
+.hero-text h1{
+  font-size:30px;
+}
+
+.hero-text h2,
+.hero-text h3{
+  font-size:20px;
+}
+
+.mainlogo span{
+  font-size:28px;
+}
+
+}
