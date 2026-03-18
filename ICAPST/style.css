@@ -64,9 +64,13 @@ header{
   color:yellow;
 }
 
-/* TAB CONTENT */
+/* TAB CONTENT - not needed in multi-page version, kept for compatibility */
 .tabcontent{
-  display:none;
+  display:block;
+}
+
+/* All page content uses a padded inner wrapper */
+.tab-inner{
   padding:40px;
 }
 
@@ -287,8 +291,9 @@ footer p{
 .speaker-grid,
 .committee-grid{
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
   gap: 20px;
+  justify-content: center;
 }
 
 .speaker-card,
@@ -298,20 +303,35 @@ footer p{
   border: 1px solid #ddd;
   border-radius: 10px;
   height: 100%;
-}
+  transition: transform 0.3s;
 }
 
 .committee-card:hover {
   transform: translateY(-5px);
 }
 
+.speaker-card img {
+  width: 150px;
+  height: 150px;
+  min-width: 150px;
+  min-height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 10px;
+  flex-shrink: 0;
+}
+
 .committee-card img {
   width: 150px;
   height: 150px;
-  object-fit: cover;   /* crops image nicely */
-  border-radius: 50%;  /* makes circle */
+  min-width: 150px;
+  min-height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
   display: block;
   margin: 0 auto 10px;
+  flex-shrink: 0;
 }
 
 .committee-card p {
@@ -324,37 +344,151 @@ footer p{
 }
 
 
+/* SINGLE CARD GRIDS - double size */
+.committee-grid.single-card{
+  grid-template-columns: 1fr;
+}
+
+.committee-grid.single-card .committee-card{
+  width: 320px;
+  padding: 25px;
+  margin: 0 auto;
+}
+
+.committee-grid.single-card .committee-card img{
+  width: 280px;
+  height: 280px;
+  min-width: 280px;
+  min-height: 280px;
+}
+
+.committee-grid.single-card .committee-card strong{
+  font-size: 20px;
+}
+
+.committee-grid.single-card .committee-card p{
+  font-size: 16px;
+}
+
+/* Spacing between committee sections */
+.committee-section{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+.committee-section:first-of-type{
+  margin-top: 10px;
+}
+
+
+.card{
+  background:#fff;
+  color:#000;
+  padding:40px 20px;
+  max-width:1100px;
+  margin:40px auto;
+  border-radius:20px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.08);
+}
+
+.card h3{
+  text-align:center;
+  color:#2b1361;
+  margin-bottom:15px;
+}
+
+.card p{
+  font-size:18px;
+  line-height:1.8;
+}
+
+/* HAMBURGER BUTTON - hidden on desktop */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  justify-content:space-between;
+  width:30px;
+  height:22px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:0;
+}
+
+.hamburger span{
+  display:block;
+  height:3px;
+  width:100%;
+  background:white;
+  border-radius:3px;
+  transition:0.3s;
+}
+
 /* MOBILE RESPONSIVE DESIGN */
 @media (max-width:768px){
 
+.hamburger{
+  display:flex;
+}
+
 .nav{
-  flex-direction:column;
-  text-align:center;
+  flex-wrap:wrap;
+  position:relative;
 }
 
 .nav ul{
+  display:none;
   flex-direction:column;
+  width:100%;
+  background:#2b1361;
   margin-top:10px;
+  border-top:1px solid rgba(255,255,255,0.2);
+}
+
+.nav ul.open{
+  display:flex;
 }
 
 .nav ul li{
-  margin:8px 0;
+  margin:0;
+  border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
-.tabcontent{
+.nav ul li a{
+  display:block;
+  padding:12px 15px;
+  font-size:16px;
+}
+
+.tab-inner{
   padding:25px 15px;
 }
 
+/* Prevent hero text from overflowing on small screens */
+.homebg{
+  padding:20px;
+  box-sizing:border-box;
+  height:auto;
+  min-height:100vh;
+}
+
+.hero-text{
+  width:100%;
+  box-sizing:border-box;
+}
+
 .hero-text h1{
-  font-size:30px;
+  font-size:22px;
+  word-break:break-word;
 }
 
 .hero-text h2{
-  font-size:20px;
+  font-size:18px;
 }
 
 .hero-text h3{
-  font-size:20px;
+  font-size:18px;
 }
 
 .mainlogo img{
@@ -362,15 +496,15 @@ footer p{
 }
 
 .mainlogo span{
-  font-size:26px;
+  font-size:22px;
 }
 
 .organizer{
-  font-size:16px;
+  font-size:14px;
 }
 
 .organizer img{
-  height:45px;
+  height:40px;
 }
 
 .welcome-section{
@@ -403,29 +537,13 @@ footer p{
   padding:15px;
 }
 
+.speaker-grid,
+.committee-grid{
+  grid-template-columns: repeat(auto-fit, minmax(140px, 180px));
+}
+
 footer{
   font-size:14px;
   padding:20px 10px;
-}
-
-.card{
-  background:#fff;
-  color:#000;
-  padding:40px 20px;
-  max-width:1100px;
-  margin:40px auto;
-  border-radius:20px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.08);
-}
-
-.card h3{
-  text-align:center;
-  color:#2b1361;
-  margin-bottom:15px;
-}
-
-.card p{
-  font-size:18px;
-  line-height:1.8;
 }
 }
