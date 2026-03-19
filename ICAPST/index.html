@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="pics/logo_icapst.png">
+  <title>ICAPST 2026 – Home</title>
+  <link rel="stylesheet" href="style.css">
+<script>
+function toggleMenu() {
+  document.getElementById('nav-menu').classList.toggle('open');
+}
+window.onload = function() {
+  document.getElementById('btn-home').classList.add('active');
+};
+</script>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">
+      <img src="pics/logo_icapst.png" alt="ICAPST Logo">
+      <span>ICAPST 2026</span>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="nav-menu">
+      <li><a id="btn-home"         href="index.html">Home</a></li>
+      <li><a id="btn-about"        href="about.html">About Us</a></li>
+      <li><a id="btn-speakers"     href="speakers.html">Speakers</a></li>
+      <li><a id="btn-advcommittee" href="advcommittee.html">Advisory Committee</a></li>
+      <li><a id="btn-abstract"     href="abstract.html">Call for Abstract</a></li>
+      <li><a id="btn-registration" href="registration.html">Registration</a></li>
+      <li><a id="btn-committee"    href="committee.html">Organizing Committee</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO — no wrapper div, sits directly so it goes edge-to-edge -->
+<div class="homebg">
+  <div class="hero-text">
+    <span class="hero-welcome">Welcome to</span>
+    <h1>1<sup>st</sup> International Conference on Advances<br>in Physical Sciences &amp; Technologies</h1>
+    <h3>22–24 October 2026</h3>
+    <div class="mainlogo">
+      <img src="pics/logo_icapst.png" alt="ICAPST logo">
+      <span>ICAPST 2026</span>
+    </div>
+    <div class="organizer">
+      <div class="organizer-text">
+        <span class="orgtitle">Organized by</span><br>
+        <img src="pics/logo2.png" alt="Logo2" loading="lazy"><br>
+        Department of Physics<br>
+        University of Rajasthan, Jaipur, India
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REST OF HOME CONTENT -->
+<div class="welcome-section">
+  <h2>Welcome to ICAPST 2026</h2>
+  <p>The Department of Physics, University of Rajasthan, is proud to host and welcome you at ICAPST, a distinguished platform for all scientists, academicians, scholars, and industrialists to share recent fundamental and technological developments in the diverse field of physical sciences. The conference will provide an exciting opportunity to present ideas, the latest research, and discuss science, technology, policy, and associated critical challenges. The conference encourages young scholars/students to present their research findings, offering a rich opportunity to interact with eminent speakers/experts, project developers, researchers, and scientists. With an emphasis on both fundamental and applied research, the conference's vision is to connect and explore scientific advances and technologies in support of a global mission for sustainable development.</p>
+
+  <div style="text-align:center; margin:20px 0;">
+    <a href="ICAPST2026.pdf" target="_blank" class="flyer-btn">Download Flyer</a>
+  </div>
+
+  <div style="text-align:center; margin:20px 0;">
+    <a href="https://forms.gle/Dc5JhneiMwkPTxCQ8" target="_blank">
+      <img src="pics/form_qr.png" alt="QR Code - Show Interest" loading="lazy" style="width:180px; height:180px; border-radius:10px; display:block; margin:0 auto 10px auto;">
+    </a>
+    <a href="https://forms.gle/Dc5JhneiMwkPTxCQ8" target="_blank" style="font-size:16px; color:#555; text-decoration:none;">Please scan to show your interest.</a>
+  </div>
+
+  <h2>Venue</h2>
+  <img src="pics/venue.jpg" alt="Humanities Department, University of Rajasthan" loading="lazy" style="width:700px; max-width:100%; border-radius:10px; margin-bottom:8px; display:block; margin-left:auto; margin-right:auto;">
+  <p style="text-align:center; color:#0645AD; margin-top:4px; font-size:1.5em; font-weight:bold;"><a href="https://maps.app.goo.gl/VJZ5Bdi8vQrxBWCs6" target="_blank" style="color:#0645AD; text-decoration:underline;">मानविकी पीठ सभागार (Humanities Chair Auditorium), University of Rajasthan, Jaipur</a></p>
+
+  <h2 style="margin-top:40px;">Journal Publication</h2>
+  <p style="text-align:center;">The selected papers from ICAPST 2026 will be recommended for publication in the following journals, as per conference tracks:</p>
+  <div class="journal-section">
+    <a class="journal-card" href="https://www.sciencedirect.com/journal/solar-compass" target="_blank">
+      <img src="https://ars.els-cdn.com/content/image/X27729400.jpg" alt="Journal Cover" loading="lazy">
+      <div class="journal-info">
+        <h4>Solar Compass — Elsevier</h4>
+        <p>Publishes cutting-edge research in solar energy science and technology.</p>
+      </div>
+    </a>
+    <p style="text-align:center;">More journals will be updated soon.</p>
+  </div>
+
+  <div class="sponsors-section">
+    <h2>Supported By</h2>
+    <div class="sponsor-images">
+      <img src="pics/support.png" alt="Supported By Logo" loading="lazy" style="max-width:100%; display:block; margin:0 auto 25px auto; border-radius:20px;">
+    </div>
+  </div>
+
+  <div class="sponsors-section">
+    <h2>Sponsorship</h2>
+    <span style="font-size:20px; font-weight:bold; display:block; margin-bottom:20px;">Sponsors are welcome</span>
+    <div class="sponsorship-text-box">
+      The organising committee of ICAPST 2026 would like to invite sponsors to showcase their products and services to conference participants and delegates.<br><br>
+      <b>Kindly reach out to us to know more about the sponsorship category, potential benefits and formal letter.</b>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 ICAPST | Department of Physics, University of Rajasthan, Jaipur, India</p>
+  <p>Conference Email: <a href="mailto:icapst2026@gmail.com" style="color:#ffd700;">icapst2026@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
