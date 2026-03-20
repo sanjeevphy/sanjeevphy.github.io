@@ -298,7 +298,7 @@ p, ul, ol, table, .tab-inner, .about-block, .card{
 /* CONFERENCE FLYER button - yellow box, blue text, centered */
 .flyer-btn{
   display: inline-block;
-  background: #f5c800;
+  background: linear-gradient(135deg, #f5c800, #ff8c00);
   color: #0645AD;
   font-size: 18px;
   font-weight: bold;
@@ -310,7 +310,7 @@ p, ul, ol, table, .tab-inner, .about-block, .card{
 }
 
 .flyer-btn:hover{
-  background: #e6b800;
+  opacity: 0.88;
   box-shadow: 0 6px 18px rgba(0,0,0,0.2);
 }
 
@@ -345,22 +345,27 @@ footer p{
 .committee-grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
-  gap: 20px;
+  column-gap: 20px;
+  row-gap: 30px;
   justify-content: center;
+  align-items: start;   /* cards start at top — prevents overlap */
 }
 
 .speaker-card,
 .committee-card{
   text-align: center;
   padding: 15px;
-  border: 2px solid #f5c800;
+  border: 1px solid #ddd;   /* subtle grey border on card box */
   border-radius: 10px;
-  height: 100%;
-  transition: transform 0.3s;
+  transition: box-shadow 0.3s;
+  /* NO transform on hover — transform causes overlap on multi-row grids */
+  overflow: visible;
 }
 
+.speaker-card:hover,
 .committee-card:hover {
-  transform: translateY(-5px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  /* no transform: translateY here */
 }
 
 .speaker-card img {
@@ -373,6 +378,7 @@ footer p{
   display: block;
   margin: 0 auto 10px;
   flex-shrink: 0;
+  border: 3px solid #f5c800;    /* yellow border on circle image */
 }
 
 .committee-card img {
@@ -385,6 +391,7 @@ footer p{
   display: block;
   margin: 0 auto 10px;
   flex-shrink: 0;
+  border: 3px solid #f5c800;    /* yellow border on circle image */
 }
 
 .committee-card p {
@@ -413,6 +420,7 @@ footer p{
   height: 280px;
   min-width: 280px;
   min-height: 280px;
+  border: 4px solid #f5c800;
 }
 
 .committee-grid.single-card .committee-card strong{
@@ -423,15 +431,24 @@ footer p{
   font-size: 16px;
 }
 
-/* Spacing between committee sections */
+/* Spacing between committee sections:
+   large top margin to clear any card above,
+   zero bottom so h3 badge sits snug below heading */
 .committee-section{
   text-align: center;
-  margin-top: 50px;
-  margin-bottom: 10px;
+  margin-top: 60px;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .committee-section:first-of-type{
   margin-top: 10px;
+}
+
+/* h3 inside committee-section: no extra top margin, tight bottom */
+.committee-section h3.yellow-h3{
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 
 
@@ -522,12 +539,6 @@ h3.purple-h3{
 }
 .template-btn:hover{ opacity:0.88; }
 
-/* SPEAKER/COMMITTEE CARD - yellow border */
-.speaker-card,
-.committee-card{
-  border: 2px solid #f5c800;
-}
-
 /* REGISTRATION TABLE */
 .reg-table-wrap{
   max-width: 800px;
@@ -542,7 +553,26 @@ h3.purple-h3{
   font-size: 15px;
 }
 .reg-table-wrap td{ padding:9px 10px; border:1px solid #ccc; color:#001f5b; font-size:15px; }
-.reg-table-wrap tr.section-header td{ color:#155724; font-weight:bold; background:#f0fff0; }
+/* Section header rows: light yellow background, dark green bold text */
+.reg-table-wrap tr.section-header td{
+  background: #fffde7;
+  color: #155724;
+  font-weight: bold;
+}
+/* Tour row: light yellow bg, title bold dark green, rest normal black */
+.reg-table-wrap tr.tour-row td{
+  background: #fffde7;
+}
+.reg-table-wrap tr.tour-row td .tour-title{
+  color: #155724;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+}
+.reg-table-wrap tr.tour-row td .tour-detail{
+  color: #222;
+  font-weight: normal;
+}
 
 /* GUIDELINES / ONLINE BOX */
 .guidelines-box,
