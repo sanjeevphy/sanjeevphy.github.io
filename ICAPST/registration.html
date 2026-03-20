@@ -7,16 +7,11 @@
   <title>ICAPST 2026 – Registration</title>
   <link rel="stylesheet" href="style.css">
 <script>
-function toggleMenu() {
-  document.getElementById('nav-menu').classList.toggle('open');
-}
-window.onload = function() {
-  document.getElementById('btn-registration').classList.add('active');
-};
+function toggleMenu() { document.getElementById('nav-menu').classList.toggle('open'); }
+window.onload = function() { document.getElementById('btn-registration').classList.add('active'); };
 </script>
 </head>
 <body>
-
 <header>
   <div class="nav">
     <div class="logo">
@@ -42,44 +37,51 @@ window.onload = function() {
   <h2>Registration</h2>
 
   <h3 class="yellow-h3">Fee Structure</h3>
-  <table border="1" cellpadding="10" cellspacing="0" style="width:100%; border-collapse:collapse; text-align:center; margin:0 auto 30px auto;">
-    <thead>
-      <tr>
-        <th>Category</th>
-        <th>Early Bird<br>(Till 31 Aug. 2026)</th>
-        <th>Regular<br>(Till 30 Sept. 2026)</th>
-        <th>Late<br>(After 30 Sept. 2026)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td colspan="4" style="text-align:center;"><strong>Indian and SAARC Participants (INR)</strong></td></tr>
-      <tr><td>Scholars/Students</td><td>2500</td><td>3000</td><td>3500</td></tr>
-      <tr><td>Academician/Faculty</td><td>3000</td><td>3500</td><td>4000</td></tr>
-      <tr><td>Industry person</td><td>4000</td><td>4500</td><td>5000</td></tr>
-      <tr><td>Attendees/Accompany</td><td>2000</td><td>2500</td><td>3000</td></tr>
-      <tr><td colspan="4" style="text-align:center;"><strong>Foreign Participants (USD)</strong></td></tr>
-      <tr><td>Scholars/Students</td><td>150</td><td>200</td><td>250</td></tr>
-      <tr><td>Academician/Faculty</td><td>250</td><td>300</td><td>330</td></tr>
-      <tr><td>Industry person</td><td>350</td><td>400</td><td>450</td></tr>
-      <tr><td>Attendees/Accompany</td><td>150</td><td>200</td><td>250</td></tr>
-      <tr>
-        <td colspan="4" style="text-align:center;">
-          <strong>Ticket of City Tour with Dinner:</strong><br>
-          INR 1500 / USD 20 (Till 30 Sept. 2026)<br>
-          INR 2500 / USD 50 (After 30 Sept. 2026)
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="reg-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Early Bird<br>(Till 31 Aug. 2026)</th>
+          <th>Regular<br>(Till 30 Sept. 2026)</th>
+          <th>Late<br>(After 30 Sept. 2026)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="section-header"><td colspan="4">Indian and SAARC Participants (INR)</td></tr>
+        <tr><td>Scholars/Students</td><td>2500</td><td>3000</td><td>3500</td></tr>
+        <tr><td>Academician/Faculty</td><td>3000</td><td>3500</td><td>4000</td></tr>
+        <tr><td>Industry person</td><td>4000</td><td>4500</td><td>5000</td></tr>
+        <tr><td>Attendees/Accompany</td><td>2000</td><td>2500</td><td>3000</td></tr>
+        <tr class="section-header"><td colspan="4">Foreign Participants (USD)</td></tr>
+        <tr><td>Scholars/Students</td><td>150</td><td>200</td><td>250</td></tr>
+        <tr><td>Academician/Faculty</td><td>250</td><td>300</td><td>330</td></tr>
+        <tr><td>Industry person</td><td>350</td><td>400</td><td>450</td></tr>
+        <tr><td>Attendees/Accompany</td><td>150</td><td>200</td><td>250</td></tr>
+        <tr class="section-header">
+          <td colspan="4">Ticket of City Tour with Dinner:<br>
+            INR 1500 / USD 20 (Till 30 Sept. 2026) &nbsp;|&nbsp;
+            INR 2500 / USD 50 (After 30 Sept. 2026)
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <h3 class="yellow-h3">Guidelines</h3>
-  <p style="text-align:center;">The registration fee covers a conference kit, access to domain-specific sessions, a presentation/participation certificate, and food coupons during the conference.</p>
-  <p style="text-align:center;">A paper presentation certificate will be issued to the presenter. The other co-authors will be issued participation certificates if registered individually.</p>
-  <p style="text-align:center;">Certificates will be issued to the Attendees.</p>
-  <p style="text-align:center;">Concession available on group registration.</p>
-  <p style="text-align:center;">Journal publication charges may or may not apply, depending on the paper track.</p>
-  <p style="text-align:center;">The paper publication will be subjected to the review process.</p>
-  <p style="text-align:center;">The ICAPST abstract book will be made available online in digital formats.</p>
+  <div class="guidelines-box">
+    <p>The registration fee covers a conference kit, access to domain-specific sessions, a presentation/participation certificate, and food coupons during the conference.</p>
+    <p>A paper presentation certificate will be issued to the presenter. The other co-authors will be issued participation certificates if registered individually.</p>
+    <p>Certificates will be issued to the Attendees.</p>
+    <p>Concession available on group registration.</p>
+    <p>The ICAPST abstract book will be made available online in digital formats.</p>
+  </div>
+
+  <h3 class="yellow-h3">Online Mode</h3>
+  <div class="online-box">
+    <p>ICAPST encourages all presenters and attendees to participate in person. However, an online session will be available for those facing unforeseen travel or health issues.</p>
+    <p>No fee concessions will be provided for this option. Participation in the online session will be granted upon request, and only a limited number of presentations will be accommodated.</p>
+  </div>
 
   <h2>Accommodation</h2>
   <p>Details will be provided soon.</p>
@@ -92,6 +94,5 @@ window.onload = function() {
   <p>&copy; 2026 ICAPST | Department of Physics, University of Rajasthan, Jaipur, India</p>
   <p>Conference Email: <a href="mailto:icapst2026@gmail.com" style="color:#ffd700;">icapst2026@gmail.com</a></p>
 </footer>
-
 </body>
 </html>

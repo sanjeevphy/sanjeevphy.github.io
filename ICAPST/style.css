@@ -353,7 +353,7 @@ footer p{
 .committee-card{
   text-align: center;
   padding: 15px;
-  border: 1px solid #ddd;
+  border: 2px solid #f5c800;
   border-radius: 10px;
   height: 100%;
   transition: transform 0.3s;
@@ -456,10 +456,10 @@ footer p{
   line-height:1.8;
 }
 
-/* YELLOW H3 BADGE - yellow background, blue text, centered */
+/* H3 YELLOW-ORANGE GRADIENT BADGE */
 h3.yellow-h3{
   display: table;
-  background: #f5c800;
+  background: linear-gradient(135deg, #f5c800, #ff8c00);
   color: #0645AD;
   padding: 8px 30px;
   border-radius: 50px;
@@ -467,6 +467,93 @@ h3.yellow-h3{
   margin: 40px auto 15px auto;
   box-shadow: 0 3px 10px rgba(0,0,0,0.12);
   text-align: center;
+}
+
+/* H3 YELLOW-PURPLE GRADIENT BADGE (for Dept of Physics) */
+h3.purple-h3{
+  display: table;
+  background: linear-gradient(135deg, #f5c800, #6a0dad);
+  color: white;
+  padding: 8px 30px;
+  border-radius: 50px;
+  font-size: 20px;
+  margin: 40px auto 15px auto;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+/* YELLOW BORDERED BOX */
+.yellow-box{
+  border: 2px solid #f5c800;
+  border-radius: 12px;
+  padding: 20px 25px;
+  margin: 15px auto;
+  background: #fff;
+}
+
+/* TWO-COLUMN layout for guidelines */
+.two-col{
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.two-col .col-left{ flex:2; min-width:220px; }
+.two-col .col-right{
+  flex:1; min-width:160px;
+  display:flex; flex-direction:column;
+  gap:12px; align-items:center; justify-content:center;
+}
+
+/* TEMPLATE BUTTONS */
+.template-btn{
+  display: block;
+  width: 100%;
+  padding: 12px 10px;
+  background: linear-gradient(135deg, #2b1361, #1a6fa8);
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  transition: 0.3s;
+}
+.template-btn:hover{ opacity:0.88; }
+
+/* SPEAKER/COMMITTEE CARD - yellow border */
+.speaker-card,
+.committee-card{
+  border: 2px solid #f5c800;
+}
+
+/* REGISTRATION TABLE */
+.reg-table-wrap{
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  overflow-x: auto;
+}
+.reg-table-wrap table{ width:100%; border-collapse:collapse; text-align:center; }
+.reg-table-wrap th{
+  background: linear-gradient(135deg, #2b1361, #1a6fa8);
+  color: #ffd700;
+  padding: 10px;
+  font-size: 15px;
+}
+.reg-table-wrap td{ padding:9px 10px; border:1px solid #ccc; color:#001f5b; font-size:15px; }
+.reg-table-wrap tr.section-header td{ color:#155724; font-weight:bold; background:#f0fff0; }
+
+/* GUIDELINES / ONLINE BOX */
+.guidelines-box,
+.online-box{
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  text-align: left;
+  border: 2px solid #f5c800;
+  border-radius: 12px;
+  padding: 20px 25px;
+  background: #fff;
 }
 
 /* CENTER all h2 - use display table so width fits content, margin auto centers it */
