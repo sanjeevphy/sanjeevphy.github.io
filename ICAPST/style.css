@@ -348,24 +348,31 @@ footer p{
   column-gap: 20px;
   row-gap: 30px;
   justify-content: center;
-  align-items: start;   /* cards start at top — prevents overlap */
+  align-items: stretch;  /* all cards in a row stretch to same height */
 }
 
 .speaker-card,
 .committee-card{
   text-align: center;
   padding: 15px;
-  border: 1px solid #ddd;   /* subtle grey border on card box */
+  border: 1px solid #ddd;
   border-radius: 10px;
   transition: box-shadow 0.3s;
-  /* NO transform on hover — transform causes overlap on multi-row grids */
-  overflow: visible;
+  display: flex;              /* flex column so card fills full height */
+  flex-direction: column;
+  align-items: center;
 }
 
 .speaker-card:hover,
 .committee-card:hover {
   box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-  /* no transform: translateY here */
+}
+
+.cm-role{
+  flex: 1;   /* role text expands to fill remaining card height */
+  font-size: 13px;
+  line-height: 1.4;
+  color: #333;
 }
 
 .speaker-card img {
@@ -572,6 +579,116 @@ h3.purple-h3{
 .reg-table-wrap tr.tour-row td .tour-detail{
   color: #222;
   font-weight: normal;
+}
+
+/* TRACK BOX - heading + bullet list, auto width */
+.track-boxes-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 20px;
+  max-width: 1020px;   /* fits exactly 3 boxes of ~320px before wrapping */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.track-box{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #f5c800;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 300px;
+  vertical-align: top;
+}
+
+.track-box-heading{
+  background: #1a6fa8;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px 14px;
+  text-align: center;
+}
+
+.track-box ul{
+  margin: 0;
+  padding: 10px 10px 10px 28px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* THREE PARALLEL BOXES */
+.three-col{
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 15px auto;
+}
+
+.info-card{
+  flex: 1;
+  min-width: 200px;
+  max-width: 340px;
+  border: 2px solid #f5c800;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.info-card-heading{
+  background: #fffde7;
+  color: #0645AD;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 10px 14px;
+  text-align: center;
+  border-bottom: 1px solid #f5c800;
+}
+
+.info-card-body{
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* TRAVEL PAGE - image+text side by side */
+.travel-box{
+  display: flex;
+  gap: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 15px auto;
+  max-width: 900px;
+  border: 2px solid #f5c800;
+}
+
+.travel-box img{
+  width: 40%;
+  min-width: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.travel-box-text{
+  background: #1a3a6a;
+  color: white;
+  padding: 20px 24px;
+  flex: 1;
+  font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+  font-size: 20px;
+  line-height: 1.7;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 600px){
+  .travel-box{ flex-direction: column; }
+  .travel-box img{ width: 100%; min-width: unset; max-height: 200px; }
+  .travel-box-text{ font-size: 17px; }
 }
 
 /* GUIDELINES / ONLINE BOX */
