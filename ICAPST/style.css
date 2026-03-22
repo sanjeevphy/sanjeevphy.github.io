@@ -559,6 +559,7 @@ h3.purple-h3{
   padding: 10px;
   font-size: 15px;
   font-weight: bold;
+  border: 1px solid #ccc;
 }
 .reg-table-wrap td{ padding:9px 10px; border:1px solid #ccc; color:#001f5b; font-size:15px; }
 /* Section header rows: light yellow background, blue bold text */
