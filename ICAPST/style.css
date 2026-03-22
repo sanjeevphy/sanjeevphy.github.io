@@ -554,24 +554,25 @@ h3.purple-h3{
 }
 .reg-table-wrap table{ width:100%; border-collapse:collapse; text-align:center; }
 .reg-table-wrap th{
-  background: linear-gradient(135deg, #2b1361, #1a6fa8);
-  color: #ffd700;
+  background: #1a6fa8;
+  color: #ffffff;
   padding: 10px;
   font-size: 15px;
-}
-.reg-table-wrap td{ padding:9px 10px; border:1px solid #ccc; color:#001f5b; font-size:15px; }
-/* Section header rows: light yellow background, dark green bold text */
-.reg-table-wrap tr.section-header td{
-  background: #fffde7;
-  color: #155724;
   font-weight: bold;
 }
-/* Tour row: light yellow bg, title bold dark green, rest normal black */
+.reg-table-wrap td{ padding:9px 10px; border:1px solid #ccc; color:#001f5b; font-size:15px; }
+/* Section header rows: light yellow background, blue bold text */
+.reg-table-wrap tr.section-header td{
+  background: #fffde7;
+  color: #0645AD;
+  font-weight: bold;
+}
+/* Tour row */
 .reg-table-wrap tr.tour-row td{
   background: #fffde7;
 }
 .reg-table-wrap tr.tour-row td .tour-title{
-  color: #155724;
+  color: #0645AD;
   font-weight: bold;
   display: block;
   margin-bottom: 4px;
@@ -580,6 +581,16 @@ h3.purple-h3{
   color: #222;
   font-weight: normal;
 }
+
+/* Registration footnote */
+.reg-footnote{
+  max-width: 800px;
+  margin: 4px auto 20px auto;
+  text-align: left;
+  font-size: 13px;
+  color: #555;
+}
+.reg-footnote p{ margin: 2px 0; }
 
 /* TRACK BOX - heading + bullet list, auto width */
 .track-boxes-wrap{
@@ -655,7 +666,7 @@ h3.purple-h3{
   text-align: left;
 }
 
-/* TRAVEL PAGE - image+text side by side */
+/* TRAVEL PAGE - image left, text right */
 .travel-box{
   display: flex;
   gap: 0;
@@ -674,21 +685,30 @@ h3.purple-h3{
 }
 
 .travel-box-text{
-  background: #1a3a6a;
-  color: white;
   padding: 20px 24px;
   flex: 1;
-  font-family: 'Brush Script MT', 'Brush Script Std', cursive;
-  font-size: 20px;
+  font-size: 15px;
   line-height: 1.7;
   display: flex;
   align-items: center;
+  color: #222;
+  background: #fff;
 }
 
 @media (max-width: 600px){
-  .travel-box{ flex-direction: column; }
-  .travel-box img{ width: 100%; min-width: unset; max-height: 200px; }
-  .travel-box-text{ font-size: 17px; }
+  .travel-box{
+    flex-direction: column;
+  }
+  .travel-box img{
+    width: 100%;
+    min-width: unset;
+    height: auto;          /* natural height — no cropping */
+    object-fit: contain;   /* show full image */
+  }
+  .travel-box-text{
+    font-size: 14px;
+    padding: 15px;
+  }
 }
 
 /* GUIDELINES / ONLINE BOX */
