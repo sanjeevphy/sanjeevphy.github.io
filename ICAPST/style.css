@@ -688,10 +688,10 @@ h3.purple-h3{
 .travel-box-text{
   padding: 20px 24px;
   flex: 1;
-  font-size: 15px;
+  font-size: 1rem;
   line-height: 1.7;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   color: #222;
   background: #fff;
 }
