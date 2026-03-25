@@ -554,7 +554,7 @@ h3.purple-h3{
 }
 .reg-table-wrap table{ width:100%; border-collapse:collapse; text-align:center; }
 .reg-table-wrap th{
-  background: #1a6fa8;
+  background: #1a3a6a;
   color: #ffffff;
   padding: 10px;
   font-size: 15px;
@@ -616,7 +616,7 @@ h3.purple-h3{
 }
 
 .track-box-heading{
-  background: #1a6fa8;
+  background: #1a3a6a;
   color: #ffffff;
   font-weight: bold;
   font-size: 14px;
@@ -688,8 +688,8 @@ h3.purple-h3{
 .travel-box-text{
   padding: 20px 24px;
   flex: 1;
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 1.15rem;
+  line-height: 1.8;
   display: flex;
   align-items: flex-start;
   color: #222;
