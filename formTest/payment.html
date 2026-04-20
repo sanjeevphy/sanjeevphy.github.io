@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Conference Payment</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+padding:20px;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0px 0px 10px #ccc;
+text-align:center;
+}
+
+h2{
+margin-bottom:20px;
+}
+
+.amount{
+font-size:28px;
+font-weight:bold;
+margin:20px 0;
+color:#28a745;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:5px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Conference Payment</h2>
+
+<p>Please complete the payment to confirm your registration.</p>
+
+<div id="amountBox" class="amount"></div>
+
+<button onclick="payNow()">Proceed to Payment</button>
+
+</div>
+
+
+<script>
+
+const params=new URLSearchParams(window.location.search)
+
+const amount=params.get("amount")
+const currency=params.get("currency")
+
+document.getElementById("amountBox").innerText="Amount to Pay: "+currency+" "+amount
+
+
+function payNow(){
+
+alert("Payment gateway integration goes here")
+
+}
+
+</script>
+
+</body>
+
+</html>
+```

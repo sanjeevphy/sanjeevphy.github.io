@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Conference Registration</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Conference Registration</h2>
+
+<form id="registrationForm">
+
+<label>Title *</label>
+<select name="title" required>
+<option value="">Select</option>
+<option>Mr</option>
+<option>Ms</option>
+<option>Miss</option>
+<option>Dr</option>
+<option>Prof</option>
+</select>
+
+
+<label>Full Name *</label>
+<input type="text" name="name" required>
+
+
+<label>Institute *</label>
+<input type="text" name="institute" required>
+
+
+<label>Country *</label>
+<select name="country" id="country" required>
+<option value="">Select</option>
+<option>India</option>
+<option>Other</option>
+</select>
+
+
+<div id="otherCountryBox" class="hidden">
+
+<label>Country Name *</label>
+<input type="text" name="otherCountry">
+
+</div>
+
+
+<label>Email *</label>
+<input type="email" name="email" required>
+
+
+<label>Alternative Email</label>
+<input type="email" name="altEmail">
+
+
+<label>Phone *</label>
+<input type="tel" name="phone" required>
+
+
+<label>Participation Type *</label>
+<select name="participation" id="participation" required>
+
+<option value="">Select</option>
+<option>Attend</option>
+<option>Poster</option>
+<option>Present</option>
+<option>Invited Talk</option>
+<option>Keynote Speaker</option>
+
+</select>
+
+
+<div id="trackBox" class="hidden">
+
+<label>Track *</label>
+
+<select name="track" id="track">
+
+<option value="">Select</option>
+<option value="NPHP">NPHP</option>
+<option value="AMNS">AMNS</option>
+<option value="ESHT">ESHT</option>
+<option value="RSES">RSES</option>
+<option value="EPIS">EPIS</option>
+<option value="EAS">EAS</option>
+
+</select>
+
+
+<label>Subtopic *</label>
+<select name="subtopic" id="subtopic"></select>
+
+</div>
+
+
+<div id="abstractBox" class="hidden">
+
+<label>Upload Abstract (.docx only, max 1MB)</label>
+
+<input type="file"
+id="abstractFile"
+name="abstractFile"
+accept=".docx">
+
+</div>
+
+
+<div id="travelBox" class="hidden">
+
+<label>Travel Requirements</label>
+
+<textarea name="travel"></textarea>
+
+</div>
+
+
+<button type="submit">Submit Registration</button>
+
+</form>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
