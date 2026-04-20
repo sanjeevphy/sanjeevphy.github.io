@@ -1,0 +1,2 @@
+This folder is to test conference form. This directory will get deleted after few days, when work will be successful.
+- Files are [[index.html][index file]], [[payment.html][payment file]], [[script.js][java script]] and [[style.css][style file]]
