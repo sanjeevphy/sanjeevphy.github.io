@@ -13,29 +13,141 @@
             background-color: #f8f9fa;
             color: #202122;
         }
-        h1 { border-bottom: 2px solid #a2a9b1; padding-bottom: 10px; }
+
+        h1 {
+            border-bottom: 2px solid #a2a9b1;
+            padding-bottom: 10px;
+        }
         
         /* Dashboard Layout */
-        .control-panel { background: #fff; padding: 15px; border: 1px solid #a2a9b1; border-radius: 4px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
-        .user-card { background: #fff; border: 1px solid #c8ccd1; border-radius: 4px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .user-header { background: #eaecf0; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #c8ccd1; border-top-left-radius: 3px; border-top-right-radius: 3px; }
-        .user-name a { font-size: 1.2em; font-weight: bold; color: #202122; text-decoration: none; }
-        .user-name a:hover { text-decoration: underline; color: #3366cc; }
-        .user-score { background: #3366cc; color: white; padding: 4px 10px; border-radius: 20px; font-weight: bold; font-size: 0.95em; }
-        
-        .article-list { padding: 10px 20px; }
-        .article-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eaecf0; }
-        .article-item:last-child { border-bottom: none; }
-        
-        .status-badge { font-weight: bold; padding: 3px 8px; border-radius: 3px; font-size: 0.85em; text-transform: uppercase; margin-right: 10px;}
-        .status-pending { background: #f8f9fa; color: #72777d; border: 1px solid #a2a9b1; }
-        .status-accepted { background: #d1e7dd; color: #14866d; }
-        .status-rejected { background: #f8d7da; color: #d33333; }
+        .control-panel {
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #a2a9b1;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
 
-        button { background-color: #3366cc; color: white; border: none; padding: 8px 14px; cursor: pointer; border-radius: 4px; font-weight: bold; }
-        button:hover { background-color: #4477dd; }
-        .loading { font-style: italic; color: #72777d; }
-        .stats-group { display: flex; gap: 20px; }
+        .user-card {
+            background: #fff;
+            border: 1px solid #c8ccd1;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .user-header {
+            background: #eaecf0;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #c8ccd1;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        .user-name a {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #202122;
+            text-decoration: none;
+        }
+
+        .user-name a:hover {
+            text-decoration: underline;
+            color: #3366cc;
+        }
+
+        .user-score {
+            background: #3366cc;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        
+        .article-list {
+            padding: 10px 20px;
+        }
+
+        .article-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eaecf0;
+        }
+
+        .article-item:last-child {
+            border-bottom: none;
+        }
+        
+        .status-badge {
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            margin-right: 10px;
+        }
+
+        .status-pending {
+            background: #f8f9fa;
+            color: #72777d;
+            border: 1px solid #a2a9b1;
+        }
+
+        .status-accepted {
+            background: #d1e7dd;
+            color: #14866d;
+        }
+
+        .status-rejected {
+            background: #f8d7da;
+            color: #d33333;
+        }
+
+        button {
+            background-color: #3366cc;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #4477dd;
+        }
+
+        .btn-toggle {
+            background-color: #72777d;
+            padding: 6px 12px;
+            font-size: 0.9em;
+        }
+
+        .btn-toggle:hover {
+            background-color: #54595d;
+        }
+
+        .loading {
+            font-style: italic;
+            color: #72777d;
+        }
+
+        .stats-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
     </style>
 </head>
 <body>
@@ -48,38 +160,54 @@
             <span id="loadingText" class="loading" style="display:none;"> Syncing with database...</span>
         </div>
         <div class="stats-group">
-            <div><strong>Total Participants:</strong> <span id="totalUsers">0</span></div>
-            <div><strong>Total Unmarked Articles:</strong> <span id="totalUnmarked">0</span></div>
+            <div><strong>Participants:</strong> <span id="totalUsers">0</span></div>
+            <div><strong>Total Articles:</strong> <span id="totalArticles">0</span></div>
+            <div><strong>Total Marks:</strong> <span id="totalMarks">0</span></div>
+            <div><strong>Unmarked:</strong> <span id="totalUnmarked">0</span></div>
         </div>
     </div>
 
     <div id="dashboardContainer">Loading live results dashboard...</div>
 
     <script>
-        // Paste your existing Google Web App URL here
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7rA985-UmIVqX_H1kwUiO_yX2QLvda2uSPS2dETbTaWyg_vIK0m1fNZq2URx9lZY/exec"; 
+        
+        let collapsedUsers = {};
 
-        // Auto-run when page opens
         window.onload = fetchPublicData;
 
         async function fetchPublicData() {
             const loadingText = document.getElementById('loadingText');
             loadingText.style.display = 'inline';
-            
+                        
             try {
                 const response = await fetch(SCRIPT_URL);
                 const allData = await response.json();
-                
-                // Process dynamic system metrics
+                                
                 let unmarkedCount = 0;
+                let totalAcceptedMarks = 0;
+
                 allData.forEach(item => {
                     if (!item.status || item.status === 'Pending' || item.status === '') {
                         unmarkedCount++;
                     }
+                    if (item.status === 'Accepted') {
+                        totalAcceptedMarks++;
+                    }
                 });
+
+                document.getElementById('totalArticles').innerText = allData.length;
+                document.getElementById('totalMarks').innerText = totalAcceptedMarks;
                 document.getElementById('totalUnmarked').innerText = unmarkedCount;
 
                 const groupedData = groupDataByUser(allData);
+
+                Object.keys(groupedData).forEach(user => {
+                    if (collapsedUsers[user] === undefined) {
+                        collapsedUsers[user] = true;
+                    }
+                });
+
                 renderDashboard(groupedData);
             } catch (error) {
                 console.error(error);
@@ -94,21 +222,28 @@
             data.forEach(item => {
                 const userName = item.user || "Unknown User";
                 if (!groups[userName]) {
-                    groups[userName] = { articles: [], score: 0 };
+                    groups[userName] = { articles: [], score: 0, markedCount: 0 };
                 }
                 if (item.status === 'Accepted') {
                     groups[userName].score += 1;
+                }
+                if (item.status === 'Accepted' || item.status === 'Rejected') {
+                    groups[userName].markedCount += 1;
                 }
                 groups[userName].articles.push(item);
             });
             return groups;
         }
 
+        function toggleUserVisibility(userName) {
+            collapsedUsers[userName] = !collapsedUsers[userName];
+            fetchPublicData();
+        }
+
         function renderDashboard(groupedData) {
             const container = document.getElementById('dashboardContainer');
-            container.innerHTML = '';
+            container.innerHTML = '';                        
             
-            // Sort users alphabetically
             const users = Object.keys(groupedData).sort();
             document.getElementById('totalUsers').innerText = users.length;
 
@@ -121,13 +256,20 @@
                 const userData = groupedData[userName];
                 const userCard = document.createElement('div');
                 userCard.className = 'user-card';
-                
+                const isCollapsed = collapsedUsers[userName];
+                                
                 let articlesHTML = '';
                 userData.articles.forEach(art => {
                     let statusClass = 'status-pending';
                     let displayStatus = 'Pending';
-                    if (art.status === 'Accepted') { statusClass = 'status-accepted'; displayStatus = 'Accepted'; }
-                    if (art.status === 'Rejected') { statusClass = 'status-rejected'; displayStatus = 'Rejected'; }
+                    if (art.status === 'Accepted') { 
+                        statusClass = 'status-accepted'; 
+                        displayStatus = 'Accepted'; 
+                    }
+                    if (art.status === 'Rejected') { 
+                        statusClass = 'status-rejected'; 
+                        displayStatus = 'Rejected'; 
+                    }                                        
                     
                     let metaInfo = '';
                     if (art.comment || art.jury) {
@@ -152,10 +294,20 @@
 
                 userCard.innerHTML = `
                     <div class="user-header">
-                        <span class="user-name">👤 <a href="${talkPageUrl}" target="_blank">${userName} ↗</a></span>
-                        <span class="user-score">Score: ${userData.score} Marks</span>
+                        <span class="user-name">
+                            👤 <a href="${talkPageUrl}" target="_blank">${userName} ↗</a>
+                            <span style="font-size:0.75em; font-weight:normal; margin-left:12px; color:#54595d;">
+                                (Articles: <strong>${userData.articles.length}</strong> | Evaluated: <strong>${userData.markedCount}</strong>)
+                            </span>
+                        </span>
+                        <div>
+                            <span class="user-score" style="margin-right:10px;">Score: ${userData.score} Marks</span>
+                            <button class="btn-toggle" onclick="toggleUserVisibility('${userName.replace(/'/g, "\\'")}')">
+                                ${isCollapsed ? '🔽 Show' : '🔼 Hide'}
+                            </button>
+                        </div>
                     </div>
-                    <div class="article-list">
+                    <div class="article-list" style="display: ${isCollapsed ? 'none' : 'block'};">
                         ${articlesHTML}
                     </div>
                 `;
