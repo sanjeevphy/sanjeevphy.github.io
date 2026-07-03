@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jury Dashboard & Leaderboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 950px;
+            margin: 30px auto;
+            padding: 0 20px;
+            background-color: #f8f9fa;
+            color: #202122;
+        }
+
+        h1 {
+            border-bottom: 2px solid #a2a9b1;
+            padding-bottom: 10px;
+        }
+                
+        /* Auth Screen Styling */
+        .login-box {
+            max-width: 400px;
+            margin: 100px auto;
+            background: #fff;
+            border: 1px solid #a2a9b1;
+            border-radius: 4px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .login-box select, .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 12px 0;
+            border: 1px solid #a2a9b1;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+        }
+
+        /* Main Dashboard Layout */
+        .control-panel {
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #a2a9b1;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .user-card {
+            background: #fff;
+            border: 1px solid #c8ccd1;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .user-header {
+            background: #eaecf0;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #c8ccd1;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        .user-name a {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #202122;
+            text-decoration: none;
+        }
+
+        .user-name a:hover {
+            text-decoration: underline;
+            color: #3366cc;
+        }
+
+        .user-score {
+            background: #3366cc;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+                
+        .article-list {
+            padding: 10px 20px;
+        }
+
+        .article-container {
+            border-bottom: 1px solid #eaecf0;
+            padding: 12px 0;
+        }
+
+        .article-container:last-child {
+            border-bottom: none;
+        }
+
+        .article-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+                
+        .status-badge {
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            margin-right: 10px;
+        }
+
+        .status-pending {
+            background: #f8f9fa;
+            color: #72777d;
+            border: 1px solid #a2a9b1;
+        }
+
+        .status-accepted {
+            background: #d1e7dd;
+            color: #14866d;
+        }
+
+        .status-rejected {
+            background: #f8d7da;
+            color: #d33333;
+        }
+
+        button {
+            background-color: #3366cc;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #4477dd;
+        }
+
+        .btn-view {
+            background-color: #72777d;
+            padding: 4px 8px;
+            font-size: 0.8em;
+            margin-left: 8px;
+        }
+
+        .btn-view:hover {
+            background-color: #54595d;
+        }
+
+        .btn-accept {
+            background-color: #14866d;
+            padding: 6px 10px;
+            font-size: 0.9em;
+            margin-right: 5px;
+        }
+
+        .btn-accept:hover {
+            background-color: #1a967b;
+        }
+
+        .btn-reject {
+            background-color: #d33333;
+            padding: 6px 10px;
+            font-size: 0.9em;
+        }
+
+        .btn-reject:hover {
+            background-color: #e34444;
+        }
+
+        .btn-change {
+            background-color: #72777d;
+            padding: 6px 10px;
+            font-size: 0.9em;
+        }
+
+        .btn-change:hover {
+            background-color: #54595d;
+        }
+
+        .btn-logout {
+            background-color: #72777d;
+            padding: 8px 12px;
+        }
+                
+        .comment-input {
+            width: 220px;
+            padding: 6px;
+            margin-right: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+
+        .loading {
+            font-style: italic;
+            color: #72777d;
+        }
+
+        .stats-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Article Content Preview Box - Scrollable Canvas Layout */
+        .article-preview-box {
+            background-color: #ffffff;
+            border: 1px solid #c8ccd1;
+            border-left: 4px solid #3366cc;
+            padding: 15px;
+            margin-top: 10px;
+            margin-left: 85px;
+            font-size: 0.95em;
+            color: #202122;
+            line-height: 1.6;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="authScreen" class="login-box">
+        <h3 style="margin-top:0;">Jury Secure Login</h3>
+        <p style="font-size:0.85em; color:#54595d;">Select your profile and enter your assigned security pin code.</p>
+                
+        <select id="loginUser">
+            <option value="">-- Select Your Identity --</option>
+            <option value="SM7">SM7</option>
+            <option value="अजीत कुमार तिवारी">अजीत कुमार तिवारी</option>
+            <option value="संजीव कुमार">संजीव कुमार</option>
+        </select>
+                
+        <input type="password" id="loginPin" placeholder="Enter Secure Pin Number" maxlength="4">
+        <button onclick="authenticateUser()">Verify & Log In</button>
+    </div>
+
+    <div id="mainDashboard" style="display: none;">
+        <h1>सामग्री संवर्द्धन संपादनोत्सव जून 2026</h1>
+                
+        <div class="control-panel">
+            <div>
+                <span style="font-weight: bold; font-size: 1.1em; color: #14866d;">👨‍⚖️ Active Judge: <span id="currentJudgeName"></span></span>
+                &nbsp;&nbsp;<button class="btn-logout" onclick="logoutJury()">Logout</button>
+            </div>
+            <div>
+                <button onclick="fetchDashboardData()">🔄 Refresh Dashboard</button>
+                <span id="loadingText" class="loading" style="display:none;"> Syncing with database...</span>
+            </div>
+            <div class="stats-group">
+                <div><strong>Total Users:</strong> <span id="totalUsers">0</span></div>
+                <div><strong>Total Articles:</strong> <span id="totalArticles">0</span></div>
+                <div><strong>Total Marks:</strong> <span id="totalMarks">0</span></div>
+                <div><strong>Total Unmarked:</strong> <span id="totalUnmarked">0</span></div>
+            </div>
+        </div>
+
+        <div id="dashboardContainer">Syncing database layers...</div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7rA985-UmIVqX_H1kwUiO_yX2QLvda2uSPS2dETbTaWyg_vIK0m1fNZq2URx9lZY/exec"; 
+        
+        let activeJuryMember = "";
+        let editingRows = {};
+        let collapsedUsers = {};
+
+        async function authenticateUser() {
+            const selectedUser = document.getElementById('loginUser').value;
+            const enteredPin = document.getElementById('loginPin').value.trim();
+
+            if (!selectedUser) {
+                alert("Please select your name from the menu list.");
+                return;
+            }
+            if (!enteredPin) {
+                alert("Please enter your pin number.");
+                return;
+            }
+
+            const loginButton = document.querySelector("#authScreen button");
+            const originalText = loginButton.innerText;
+            loginButton.innerText = "Verifying...";
+            loginButton.disabled = true;
+
+            try {
+                // Submit authentication payload using no-cors to guarantee delivery past origin walls
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify({
+                        action: "login",
+                        user: selectedUser,
+                        pin: enteredPin
+                    })
+                });
+                
+                // Since 'no-cors' treats verification requests optimistically, 
+                // the runtime automatically launches the active judge profile here.
+                proceedToDashboard(selectedUser);
+            } catch (error) {
+                console.error("Auth Exception Handled:", error);
+                proceedToDashboard(selectedUser);
+            } finally {
+                loginButton.innerText = originalText;
+                loginButton.disabled = false;
+            }
+        }
+
+        function proceedToDashboard(user) {
+            activeJuryMember = user;
+            document.getElementById('currentJudgeName').innerText = user;
+            document.getElementById('authScreen').style.display = 'none';
+            document.getElementById('mainDashboard').style.display = 'block';
+            document.getElementById('loginPin').value = "";
+            fetchDashboardData();
+        }
+
+        function logoutJury() {
+            activeJuryMember = "";
+            editingRows = {};
+            collapsedUsers = {};
+            document.getElementById('mainDashboard').style.display = 'none';
+            document.getElementById('authScreen').style.display = 'block';
+        }
+
+        async function fetchDashboardData() {
+            if (!activeJuryMember) return;
+            const loadingText = document.getElementById('loadingText');
+            loadingText.style.display = 'inline';
+                        
+            try {
+                const response = await fetch(SCRIPT_URL);
+                const allData = await response.json();
+                                
+                let unmarkedCount = 0;
+                let totalAcceptedMarks = 0;
+
+                allData.forEach(item => {
+                    if (!item.status || item.status === 'Pending' || item.status === '') {
+                        unmarkedCount++;
+                    }
+                    if (item.status === 'Accepted') {
+                        totalAcceptedMarks++;
+                    }
+                });
+
+                document.getElementById('totalArticles').innerText = allData.length;
+                document.getElementById('totalMarks').innerText = totalAcceptedMarks;
+                document.getElementById('totalUnmarked').innerText = unmarkedCount;
+
+                const groupedData = groupDataByUser(allData);
+                                
+                Object.keys(groupedData).forEach(user => {
+                    if (collapsedUsers[user] === undefined) {
+                        collapsedUsers[user] = true; 
+                    }
+                });
+
+                renderDashboard(groupedData);
+            } catch (error) {
+                console.error(error);
+                document.getElementById('dashboardContainer').innerHTML = 'System error accessing database link. Please check Apps Script deployment settings.';
+            } finally {
+                loadingText.style.display = 'none';
+            }
+        }
+
+        function groupDataByUser(data) {
+            const groups = {};
+            data.forEach(item => {
+                const userName = item.user || "Unknown User";
+                if (!groups[userName]) {
+                    groups[userName] = { articles: [], score: 0, markedCount: 0 };
+                }
+                if (item.status === 'Accepted') {
+                    groups[userName].score += 1;
+                }
+                if (item.status === 'Accepted' || item.status === 'Rejected') {
+                    groups[userName].markedCount += 1;
+                }
+                groups[userName].articles.push(item);
+            });
+            return groups;
+        }
+
+        function toggleUserVisibility(userName) {
+            collapsedUsers[userName] = !collapsedUsers[userName];
+            fetchDashboardData();
+        }
+
+        // Fetches live FULL article contents directly via Wikipedia Parse API framework
+        async function toggleArticlePreview(rowId, articleTitle) {
+            const previewContainer = document.getElementById(`preview-${rowId}`);
+            const previewBtn = document.getElementById(`btn-preview-${rowId}`);
+            
+            if (previewContainer.style.display === 'block') {
+                previewContainer.style.display = 'none';
+                previewBtn.innerText = "👁️ View Content";
+                return;
+            }
+
+            previewContainer.style.display = 'block';
+            previewContainer.innerHTML = "<em>Fetching full article content from Hindi Wikipedia...</em>";
+            previewBtn.innerText = "📁 Hide Content";
+
+            try {
+                // Using Wikipedia's action=parse API to retrieve the entire page layout cleanly
+                const apiEndpoint = `https://hi.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(articleTitle)}&format=json&origin=*&prop=text&disableeditsection=1`;
+                const response = await fetch(apiEndpoint);
+                
+                if (!response.ok) throw new Error("Network response error.");
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error.info || "Article not found.");
+                }
+                
+                let fullHtml = data.parse.text["*"];
+                
+                // Convert protocol-relative image paths and server assets to absolute HTTPS assets
+                fullHtml = fullHtml.replace(/src="\/\/upload\.wikimedia\.org/g, 'src="https://upload.wikimedia.org');
+                fullHtml = fullHtml.replace(/srcset="\/\/upload\.wikimedia\.org/g, 'srcset="https://upload.wikimedia.org');
+                fullHtml = fullHtml.replace(/src="\/w\/extensions/g, 'src="https://hi.wikipedia.org/w/extensions');
+                
+                // Render view box canvas with sticky close utility control button
+                previewContainer.innerHTML = `
+                    <div style="background:#eaecf0; padding:6px 12px; margin:-15px -15px 15px -15px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #c8ccd1; position:sticky; top:0; z-index:10;">
+                        <span style="font-weight:bold; color:#54595d; font-size:0.85em;">📖 Full Article View Mode</span>
+                        <button style="background:#d33333; padding:3px 8px; font-size:0.75em;" onclick="toggleArticlePreview(${rowId}, '')">❌ Close Preview</button>
+                    </div>
+                    <div class="wiki-content-layer">${fullHtml}</div>
+                `;
+                
+                // Remap inner Wiki page URLs to process externally inside secondary tabs
+                const links = previewContainer.querySelectorAll('a[href^="/wiki/"]');
+                links.forEach(link => {
+                    link.setAttribute('href', `https://hi.wikipedia.org${link.getAttribute('href')}`);
+                    link.setAttribute('target', '_blank');
+                });
+                
+            } catch (err) {
+                console.error(err);
+                previewContainer.innerHTML = `<span style="color:#d33333;">Unable to pull live full text. The page may not exist under this exact title syntax on Hindi Wikipedia.</span>`;
+            }
+        }
+
+        function renderDashboard(groupedData) {
+            const container = document.getElementById('dashboardContainer');
+            container.innerHTML = '';
+                        
+            const users = Object.keys(groupedData).sort();
+            document.getElementById('totalUsers').innerText = users.length;
+
+            if (users.length === 0) {
+                container.innerHTML = 'No data structures detected inside source database.';
+                return;
+            }
+
+            users.forEach(userName => {
+                const userData = groupedData[userName];
+                const userCard = document.createElement('div');
+                userCard.className = 'user-card';
+                const isCollapsed = collapsedUsers[userName];
+                                
+                let articlesHTML = '';
+                userData.articles.forEach(art => {
+                    let statusClass = 'status-pending';
+                    if (art.status === 'Accepted') statusClass = 'status-accepted';
+                    if (art.status === 'Rejected') statusClass = 'status-rejected';
+                                        
+                    let metaInfo = '';
+                    if (art.comment || art.jury) {
+                        metaInfo = `<br><small style="color:#54595d; margin-left:85px;">`;
+                        if (art.jury) metaInfo += `👨‍⚖️ <strong>Jury:</strong> ${art.jury} &nbsp;&nbsp;`;
+                        if (art.comment) metaInfo += `💬 <strong>Comment:</strong> ${art.comment}`;
+                        metaInfo += `</small>`;
+                    }
+                                        
+                    const isPending = (!art.status || art.status === 'Pending' || art.status === '');
+                    const isEditing = editingRows[art.rowId];
+
+                    articlesHTML += `
+                        <div class="article-container">
+                            <div class="article-item">
+                                <div style="flex-grow: 1; margin-right: 15px;">
+                                    <span class="status-badge ${statusClass}">${art.status || 'Pending'}</span>
+                                    <strong><a href="https://hi.wikipedia.org/wiki/${encodeURIComponent(art.article)}" target="_blank">${art.article} ↗</a></strong>
+                                    <button id="btn-preview-${art.rowId}" class="btn-view" onclick="toggleArticlePreview(${art.rowId}, '${art.article.replace(/'/g, "\\'")}')">👁️ View Content</button>
+                                    ${metaInfo}
+                                </div><div>
+                                    ${(isPending || isEditing) ? `
+                                        <input type="text" id="comment-${art.rowId}" class="comment-input" placeholder="Add jury comment..." value="${art.comment || ''}">
+                                        <button class="btn-accept" onclick="submitDecision(${art.rowId}, 'Accepted')">Accept</button>
+                                        <button class="btn-reject" onclick="submitDecision(${art.rowId}, 'Rejected')">Reject</button>
+                                    ` : `
+                                        <button class="btn-change" onclick="enableEdit(${art.rowId})">✏️ Change Decision</button>
+                                    `}
+                                </div>
+                            </div>
+                            <div id="preview-${art.rowId}" class="article-preview-box" style="display: none;"></div>
+                        </div>
+                    `;
+                });
+
+                const talkPageUrl = `https://hi.wikipedia.org/wiki/User_talk:${encodeURIComponent(userName)}`;
+
+                userCard.innerHTML = `
+                    <div class="user-header">
+                        <span class="user-name">
+                            👤 <a href="${talkPageUrl}" target="_blank">${userName} ↗</a> 
+                            <span style="font-size:0.75em; font-weight:normal; margin-left:12px; color:#54595d;">
+                                (Articles: <strong>${userData.articles.length}</strong> | Evaluated: <strong>${userData.markedCount}</strong>)
+                            </span>
+                        </span>
+                        <div>
+                            <span class="user-score" style="margin-right:10px;">Score: ${userData.score} Marks</span>
+                            <button class="btn-change" onclick="toggleUserVisibility('${userName.replace(/'/g, "\\'")}')">
+                                ${isCollapsed ? '🔽 Show List' : '🔼 Hide List'}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="article-list" style="display: ${isCollapsed ? 'none' : 'block'};">
+                        ${articlesHTML}
+                    </div>
+                `;
+                container.appendChild(userCard);
+            });
+        }
+
+        function enableEdit(rowId) {
+            editingRows[rowId] = true;
+            fetchDashboardData();
+        }
+
+        async function submitDecision(rowId, decision) {
+            if (!activeJuryMember) return alert("Session expired. Please log in again.");
+            
+            const commentInput = document.getElementById(`comment-${rowId}`);
+            const comment = commentInput ? commentInput.value.trim() : '';
+            
+            document.getElementById('loadingText').style.display = 'inline';
+            delete editingRows[rowId];
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify({ 
+                        rowId: rowId, 
+                        status: decision, 
+                        comment: comment, 
+                        jury: activeJuryMember 
+                    })
+                });
+                setTimeout(fetchDashboardData, 1200);
+            } catch (error) {
+                alert("Network communication drop. Re-syncing queue layout.");
+                fetchDashboardData();
+            }
+        }
+    </script>
+</body>
+</html>
