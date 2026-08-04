@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institute Automated Master & Teacher Timetable</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .table-section {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: #fff;
+        }
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 8px;
+            text-align: center;
+            font-size: 13px;
+        }
+        th {
+            background-color: #34495e;
+            color: white;
+        }
+        td input[type="text"] {
+            width: 95%;
+            padding: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 12px;
+            text-align: center;
+        }
+        .btn-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        button:hover {
+            background-color: #219653;
+        }
+        .teacher-card {
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .teacher-card h4 {
+            margin-top: 0;
+            color: #2980b9;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .instructions {
+            background: #e8f4f8;
+            border-left: 5px solid #3498db;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .warning-box {
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .warning-yellow {
+            background-color: #fcf3cf;
+            color: #b7950b;
+            border: 1px solid #f9e79f;
+        }
+        .warning-red {
+            background-color: #fadbd8;
+            color: #922b21;
+            border: 1px solid #f5b7b1;
+        }
+        .hide-btn {
+            background: none;
+            border: none;
+            color: #7f8c8d;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        .hide-btn:hover {
+            background-color: rgba(0,0,0,0.05);
+            color: #333;
+        }
+        .controls-top {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .controls-top label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Institute Master Timetable Generator</h1>
+    
+    <div class="instructions">
+        <strong>Instructions for Filling:</strong>
+        <ul>
+            <li><strong>Place D (Sem 1 & Sem 3):</strong> Enter format like <code>SKG - PaperName</code> in the respective hour slot.</li>
+            <li><strong>UM1 & UM2:</strong> Enter format like <code>Room101, MT-SKG</code> or multiple entries comma-separated. Use day prefixes: <code>M-</code>, <code>TU-</code>, <code>W-</code>, <code>TH-</code>, <code>F-</code>, <code>S-</code> or combined codes <code>MT-</code> (Mon-Tue), <code>WTh-</code> (Wed-Thu), <code>FS-</code> (Fri-Sat).</li>
+            <li><strong>Weekly Limit Rules:</strong> SKG, MG, and SK have a limit of 14 hours/week. All other teachers have a limit of 16 hours/week.</li>
+        </ul>
+    </div>
+
+    <!-- ================= PLACE D: SEMESTER 1 ================= -->
+    <div class="table-section">
+        <h3>1. Place D — 1st Semester (10 AM to 5 PM)</h3>
+        <table id="table-placeD-sem1">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>10-11 AM</th>
+                    <th>11-12 PM</th>
+                    <th>12-1 PM</th>
+                    <th>1-2 PM</th>
+                    <th>2-3 PM (Lab)</th>
+                    <th>3-4 PM (Lab)</th>
+                    <th>4-5 PM (Lab)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- ================= PLACE D: SEMESTER 3 ================= -->
+    <div class="table-section">
+        <h3>2. Place D — 3rd Semester (10 AM to 5 PM)</h3>
+        <table id="table-placeD-sem3">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>10-11 AM</th>
+                    <th>11-12 PM</th>
+                    <th>12-1 PM</th>
+                    <th>1-2 PM</th>
+                    <th>2-3 PM (Lab)</th>
+                    <th>3-4 PM (Lab)</th>
+                    <th>4-5 PM (Lab)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- ================= PLACE UM1 ================= -->
+    <div class="table-section">
+        <h3>3. Place UM1 (9 AM to 3 PM)</h3>
+        <table id="table-um1">
+            <thead>
+                <tr>
+                    <th>Class / Track</th>
+                    <th>9-10 AM</th>
+                    <th>10-11 AM</th>
+                    <th>11-12 PM</th>
+                    <th>12-1 PM</th>
+                    <th>1-2 PM</th>
+                    <th>2-3 PM</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- ================= PLACE UM2 ================= -->
+    <div class="table-section">
+        <h3>4. Place UM2 (8 AM to 3 PM)</h3>
+        <table id="table-um2">
+            <thead>
+                <tr>
+                    <th>Class / Track</th>
+                    <th>8-9 AM</th>
+                    <th>9-10 AM</th>
+                    <th>10-11 AM</th>
+                    <th>11-12 PM</th>
+                    <th>12-1 PM</th>
+                    <th>1-2 PM</th>
+                    <th>2-3 PM</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- GENERATE BUTTON -->
+    <div class="btn-container">
+        <button onclick="generateIndividualTimetables()">Generate / Update Individual Timetables</button>
+    </div>
+
+    <!-- ================= INDIVIDUAL TEACHER TABLES ================= -->
+    <div class="table-section">
+        <h2>Individual Teacher Timetables (Auto-Filled Grids & Validation Checks)</h2>
+        <div class="controls-top">
+            <label><input type="checkbox" id="global-hide-yellow" onchange="toggleAllYellowWarnings(this)"> Hide all Yellow Warnings globally</label>
+        </div>
+        <div id="individual-tables-container">
+            <p style="text-align: center; color: #7f8c8d;">Click the button above after filling out the master tables to compile individual teacher schedules.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const teachersList = [
+        "SKG", "MG", "SK", "CLS", "SC", "APS", "KG", "NJ", "AKM", 
+        "DK", "KK", "SNJ", "SJV", "SM", "BLM", "DM", "PM", "JKM", 
+        "PR", "JS", "SS", "MS", "DKY", "RY", "SY"
+    ];
+
+    // Define specific weekly hour limits per teacher
+    const teacherHourLimits = {
+        "SKG": 14, "MG": 14, "SK": 14
+    };
+    // Default limit for others is 16 hours
+    function getTeacherLimit(teacherName) {
+        return teacherHourLimits[teacherName] !== undefined ? teacherHourLimits[teacherName] : 16;
+    }
+
+    const dTimeSlots = ["10-11 AM", "11-12 PM", "12-1 PM", "1-2 PM", "2-3 PM", "3-4 PM", "4-5 PM"];
+    const um1Classes = ["B1", "B3", "B5", "BS1", "BS3", "BS5"];
+    const um1TimeSlots = ["9-10 AM", "10-11 AM", "11-12 PM", "12-1 PM", "1-2 PM", "2-3 PM"];
+
+    const um2Classes = ["B1", "B3", "B5", "BS1", "BS3", "BS5"];
+    const um2TimeSlots = ["8-9 AM", "9-10 AM", "10-11 AM", "11-12 PM", "12-1 PM", "1-2 PM", "2-3 PM"];
+
+    const masterUnifiedHours = [
+        "8-9 AM", "9-10 AM", "10-11 AM", "11-12 PM", "12-1 PM", 
+        "1-2 PM", "2-3 PM", "3-4 PM", "4-5 PM"
+    ];
+
+    const timeToHourVal = {
+        "8-9 AM": 8, "9-10 AM": 9, "10-11 AM": 10, "11-12 PM": 11,
+        "12-1 PM": 12, "1-2 PM": 13, "2-3 PM": 14, "3-4 PM": 15, "4-5 PM": 16
+    };
+
+    window.onload = function() {
+        buildInputTable('table-placeD-sem1', days, 7);
+        buildInputTable('table-placeD-sem3', days, 7);
+        buildInputTableRows('table-um1', um1Classes, 6);
+        buildInputTableRows('table-um2', um2Classes, 7);
+    };
+
+    function buildInputTable(tableId, rowLabels, colCount) {
+        const tbody = document.querySelector(`#${tableId} tbody`);
+        rowLabels.forEach(day => {
+            let tr = document.createElement('tr');
+            let tdDay = document.createElement('td');
+            tdDay.innerText = day;
+            tdDay.style.fontWeight = "bold";
+            tr.appendChild(tdDay);
+            
+            for(let i=0; i<colCount; i++) {
+                let td = document.createElement('td');
+                let input = document.createElement('input');
+                input.type = 'text';
+                input.dataset.day = day;
+                td.appendChild(input);
+                tr.appendChild(td);
+            }
+            tbody.appendChild(tr);
+        });
+    }
+
+    function buildInputTableRows(tableId, classLabels, colCount) {
+        const tbody = document.querySelector(`#${tableId} tbody`);
+        classLabels.forEach(cls => {
+            let tr = document.createElement('tr');
+            let tdCls = document.createElement('td');
+            tdCls.innerText = cls;
+            tdCls.style.fontWeight = "bold";
+            tr.appendChild(tdCls);
+            
+            for(let i=0; i<colCount; i++) {
+                let td = document.createElement('td');
+                let input = document.createElement('input');
+                input.type = 'text';
+                input.dataset.class = cls;
+                td.appendChild(input);
+                tr.appendChild(td);
+            }
+            tbody.appendChild(tr);
+        });
+    }
+
+    function generateIndividualTimetables() {
+        let teacherSchedules = {};
+        teachersList.forEach(t => {
+            teacherSchedules[t] = {};
+            days.forEach(d => {
+                teacherSchedules[t][d] = {};
+                masterUnifiedHours.forEach(h => {
+                    teacherSchedules[t][d][h] = [];
+                });
+            });
+        });
+
+        parsePlaceDTable('table-placeD-sem1', 'Place D (Sem 1)', dTimeSlots, teacherSchedules);
+        parsePlaceDTable('table-placeD-sem3', 'Place D (Sem 3)', dTimeSlots, teacherSchedules);
+
+        parseUMTable('table-um1', 'UM1', um1TimeSlots, teacherSchedules);
+        parseUMTable('table-um2', 'UM2', um2TimeSlots, teacherSchedules);
+
+        renderIndividualUI(teacherSchedules);
+    }
+
+    function parsePlaceDTable(tableId, locationContext, timeSlots, store) {
+        const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+        rows.forEach(row => {
+            const day = row.cells[0].innerText;
+            const inputs = row.querySelectorAll('input');
+            inputs.forEach((input, index) => {
+                let val = input.value.trim();
+                if(val) {
+                    let parts = val.split('-');
+                    let teacher = parts[0].trim().toUpperCase();
+                    let details = parts[1] ? parts[1].trim() : "Theory/Lab";
+                    let slotTime = timeSlots[index];
+
+                    if(store[teacher] && store[teacher][day]) {
+                        store[teacher][day][slotTime].push({ text: `${locationContext} - ${details}`, place: 'Place D' });
+                    }
+                }
+            });
+        });
+    }
+
+    function parseUMTable(tableId, locationContext, timeSlots, store) {
+        const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+        rows.forEach(row => {
+            const className = row.cells[0].innerText;
+            const inputs = row.querySelectorAll('input');
+            inputs.forEach((input, index) => {
+                let val = input.value.trim();
+                if(val) {
+                    let slotTime = timeSlots[index];
+                    let tokens = val.split(',').map(s => s.trim());
+                    
+                    for (let i = 0; i < tokens.length; i += 2) {
+                        let room = tokens[i] || "Room";
+                        let assignPart = tokens[i+1] || tokens[i];
+                        
+                        let parsed = matchDayCode(assignPart);
+                        let teacher = parsed.teacher;
+                        let targetDays = parsed.days;
+
+                        if (targetDays.length === 0) {
+                            targetDays = [row.cells[0].innerText];
+                        }
+
+                        targetDays.forEach(day => {
+                            if(store[teacher] && store[teacher][day] && store[teacher][day][slotTime]) {
+                                store[teacher][day][slotTime].push({ text: `${locationContext} (${className}, ${room})`, place: locationContext });
+                            }
+                        });
+                    }
+                }
+            });
+        });
+    }
+
+    function matchDayCode(str) {
+        let upper = str.toUpperCase();
+        let targetDays = [];
+        let teacher = str;
+
+        if(upper.startsWith('MT-')) { targetDays = ['Monday', 'Tuesday']; teacher = str.substring(3); }
+        else if(upper.startsWith('WTH-')) { targetDays = ['Wednesday', 'Thursday']; teacher = str.substring(4); }
+        else if(upper.startsWith('FS-')) { targetDays = ['Friday', 'Saturday']; teacher = str.substring(3); }
+        else if(upper.startsWith('TU-')) { targetDays = ['Tuesday']; teacher = str.substring(3); }
+        else if(upper.startsWith('TH-')) { targetDays = ['Thursday']; teacher = str.substring(3); }
+        else if(upper.startsWith('M-')) { targetDays = ['Monday']; teacher = str.substring(2); }
+        else if(upper.startsWith('W-')) { targetDays = ['Wednesday']; teacher = str.substring(2); }
+        else if(upper.startsWith('F-')) { targetDays = ['Friday']; teacher = str.substring(2); }
+        else if(upper.startsWith('S-')) { targetDays = ['Saturday']; teacher = str.substring(2); }
+
+        return { days: targetDays, teacher: teacher.trim().toUpperCase() };
+    }
+
+    function renderIndividualUI(store) {
+        const container = document.getElementById('individual-tables-container');
+        container.innerHTML = "";
+        const globalHideChecked = document.getElementById('global-hide-yellow').checked;
+
+        teachersList.forEach(teacher => {
+            let card = document.createElement('div');
+            card.className = 'teacher-card';
+            
+            let h4 = document.createElement('h4');
+            let limit = getTeacherLimit(teacher);
+            
+            // Calculate total teaching hours assigned for the week
+            let totalAssignedHours = 0;
+            days.forEach(day => {
+                masterUnifiedHours.forEach(slot => {
+                    totalAssignedHours += store[teacher][day][slot].length;
+                });
+            });
+
+            h4.innerHTML = `<span>Teacher: ${teacher}</span> <span style="font-size: 13px; font-weight: normal; color: #555;">Weekly Hours: <strong>${totalAssignedHours}</strong> / Target: ${limit}h</span>`;
+            card.appendChild(h4);
+
+            let warningsContainer = document.createElement('div');
+            let teacherData = store[teacher];
+            let dayWarnings = [];
+
+            // Check weekly total hour limits (Yellow warning if exceeds or falls short)
+            if (totalAssignedHours > limit) {
+                dayWarnings.push({ type: 'yellow', text: `Weekly workload limit exceeded! Assigned ${totalAssignedHours} hours (Target is ${limit}h).` });
+            } else if (totalAssignedHours < limit) {
+                dayWarnings.push({ type: 'yellow', text: `Weekly workload is below requirement! Assigned ${totalAssignedHours} hours (Target is ${limit}h).` });
+            }
+
+            days.forEach(day => {
+                let slotsAtPlaceD = [];
+                let slotsAtUM = [];
+
+                masterUnifiedHours.forEach(slot => {
+                    let cellEntries = teacherData[day][slot];
+                    
+                    if(cellEntries.length > 1) {
+                        dayWarnings.push({ type: 'red', text: `[${day}] Overlap conflict at ${slot}: Assigned multiple classes simultaneously.` });
+                    }
+
+                    cellEntries.forEach(entry => {
+                        if(entry.place === 'Place D') {
+                            slotsAtPlaceD.push(timeToHourVal[slot]);
+                        } else if(entry.place === 'UM1' || entry.place === 'UM2') {
+                            slotsAtUM.push(timeToHourVal[slot]);
+                        }
+                    });
+                });
+
+                if(slotsAtPlaceD.length > 0 && slotsAtUM.length > 0) {
+                    let minDiff = 999;
+                    slotsAtPlaceD.forEach(dHour => {
+                        slotsAtUM.forEach(umHour => {
+                            let diff = Math.abs(dHour - umHour) - 1;
+                            if(diff < minDiff) minDiff = diff;
+                        });
+                    });
+
+                    if(minDiff < 1) {
+                        dayWarnings.push({ type: 'red', text: `[${day}] Critical Transition: Less than 1-hour gap between Place D and UM classes!` });
+                    } else {
+                        dayWarnings.push({ type: 'yellow', text: `[${day}] Multi-Location Warning: Teaching at both Place D and UM on the same day.` });
+                    }
+                }
+            });
+
+            dayWarnings.forEach(w => {
+                let wDiv = document.createElement('div');
+                wDiv.className = `warning-box ${w.type === 'red' ? 'warning-red' : 'warning-yellow'}`;
+                
+                let textSpan = document.createElement('span');
+                textSpan.innerHTML = `⚠️ Warning: ${w.text}`;
+                wDiv.appendChild(textSpan);
+
+                // Add individual hide option for yellow warnings
+                if (w.type === 'yellow') {
+                    let hideBtn = document.createElement('button');
+                    hideBtn.className = 'hide-btn';
+                    hideBtn.innerText = globalHideChecked ? 'Show' : 'Hide';
+                    
+                    if (globalHideChecked) {
+                        wDiv.style.display = 'none';
+                    }
+
+                    hideBtn.onclick = function() {
+                        if (wDiv.style.display === 'none') {
+                            wDiv.style.display = 'flex';
+                            hideBtn.innerText = 'Hide';
+                        } else {
+                            wDiv.style.display = 'none';
+                            hideBtn.innerText = 'Show';
+                        }
+                    };
+                    wDiv.appendChild(hideBtn);
+                }
+
+                warningsContainer.appendChild(wDiv);
+            });
+            card.appendChild(warningsContainer);
+
+            // Render Grid Table
+            let table = document.createElement('table');
+            let thead = document.createElement('thead');
+            let headerHtml = `<tr><th>Day</th>`;
+            masterUnifiedHours.forEach(h => { headerHtml += `<th>${h}</th>`; });
+            headerHtml += `</tr>`;
+            thead.innerHTML = headerHtml;
+            table.appendChild(thead);
+
+            let tbody = document.createElement('tbody');
+            days.forEach(day => {
+                let tr = document.createElement('tr');
+                let tdDay = document.createElement('td');
+                tdDay.innerText = day;
+                tdDay.style.fontWeight = "bold";
+                tr.appendChild(tdDay);
+
+                masterUnifiedHours.forEach(slot => {
+                    let td = document.createElement('td');
+                    let entries = teacherData[day][slot];
+                    if(entries && entries.length > 0) {
+                        td.innerHTML = entries.map(e => e.text).join("<br>");
+                        td.style.backgroundColor = entries.length > 1 ? "#fadbd8" : "#e8f4f8";
+                    } else {
+                        td.innerText = "-";
+                        td.style.color = "#bdc3c7";
+                    }
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+            card.appendChild(table);
+            container.appendChild(card);
+        });
+    }
+
+    function toggleAllYellowWarnings(checkbox) {
+        // Re-run generation or toggle visible elements to instantly update UI based on global master checkbox
+        generateIndividualTimetables();
+    }
+</script>
+
+</body>
+</html>
